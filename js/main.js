@@ -1,8 +1,10 @@
 /*перша сторінка при загрузці завжди лєнта*/
 $("#content > div").hide();
+$("#entry_panel").hide();
+$("#register_panel").hide();
 $("#"+getCookie("page")).show();
-if(getCookie("entry")==="no") buttonsHide();
-else buttonsShow();
+if(getCookie("entry")!=="yes") buttonsHide();
+else if(getCookie("entry")==="yes") buttonsShow();
 
 /*перехід між сторінками при натисканні на кнопки меню */
 $("#home_button").click(function () {
@@ -41,14 +43,30 @@ $("#exit_button").click(function () {
 });
 
 $("#entry_button").click(function () {
+    $("#entry_panel").show();
+
+});
+$("#register_button").click(function () {
+    $("#register_panel").show();
+
+});
+$("#back_entry_button").click(function () {
+    $("#entry_panel").hide();
+});
+$("#back_register_button").click(function () {
+    $("#register_panel").hide();
+});
+$("#final_entry_button").click(function () {
     $("#content > div").hide();
+    $("#entry_panel").hide();
     $("#home").show();
     buttonsShow();
     document.cookie = "page=home;entry=yes";
 
 });
-$("#register_button").click(function () {
+$("#final_register_button").click(function () {
     $("#content > div").hide();
+    $("#register_panel").hide();
     $("#home").show();
     buttonsShow();
     document.cookie = "page=home;entry=yes";
@@ -58,7 +76,6 @@ function buttonsHide(){
     $("#menu > a").hide();
     $("#entry_button").show();
     $("#register_button").show();
-    $("#help_button").show();
 }
 function buttonsShow() {
     $("#menu > a").hide();

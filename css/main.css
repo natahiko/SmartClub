@@ -1,8 +1,29 @@
+*{
+    font-family: "Segoe UI";
+    font-size:22px;
+}
 .menu{
     width:20%;
    float:left;
-    background: #26ce59;
 
+}
+.entry_panel{
+    position: absolute;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:1000;
+    background: rgba(238, 238, 255, 0.54);
+
+}
+.entry_fields{
+    background: #62a0b9;
+    overflow: auto;
+  margin: 10% 25%;
+    padding:2%;
+}
+.menu img{
+    width:50px;
 }
 .content{
     width: 70%;
