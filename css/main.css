@@ -1,0 +1,12 @@
+.menu{
+    width:20%;
+   float:left;
+    background: #26ce59;
+
+}
+.content{
+    width: 70%;
+    margin-right: 10%;
+    float:right;
+    background: #faabec;
+}
