@@ -2,10 +2,45 @@
     font-family: "Segoe UI";
     font-size:22px;
 }
+body{
+    margin:0!important;
+    padding: 0!important;
+}
 .menu{
-    width:20%;
-   float:left;
+    width:calc(20% - 2px);
+    float:left;
+    background: #ed1729;
+    background-image: url("../images/menu_bg.png");
+    background-size: 500px;
+    min-height: calc(100vh - 44px);
+    padding: 30px 0;
 
+}
+
+
+.menu a{
+    text-decoration: none;
+    font-size: 1px;
+    padding: 0 ;
+    margin:  0;
+}
+
+.menu img{
+    margin: 0 10%;
+    width: 80% ;
+    height:auto;
+}
+#exit_button img{
+    margin: 0 35% 0 5%;
+    width:60%;
+}
+#exit_button img:hover,#exit_button img:focus{
+    transform: translateX(-15px);
+    transition: transform 2s;
+}
+.menu a:hover, a:focus, a img:hover,a img:focus{
+    transform: scale(1.2);
+    transition: transform 2s;
 }
 .entry_panel{
     position: absolute;
@@ -14,7 +49,7 @@
     width:100%;
     z-index:1000;
     background: rgba(238, 238, 255, 0.54);
-
+    min-height:100vh;
 }
 .entry_fields{
     background: #62a0b9;
@@ -22,12 +57,11 @@
   margin: 10% 25%;
     padding:2%;
 }
-.menu img{
-    width:50px;
-}
+
 .content{
     width: 70%;
-    margin-right: 10%;
+    margin: 0 5%;
     float:right;
     background: #faabec;
+    min-height:100vh;
 }

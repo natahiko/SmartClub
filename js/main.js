@@ -1,4 +1,4 @@
-/*перша сторінка при загрузці завжди лєнта*/
+/*перша сторінка при загрузці*/
 $("#content > div").hide();
 $("#entry_panel").hide();
 $("#register_panel").hide();
@@ -10,35 +10,36 @@ else if(getCookie("entry")==="yes") buttonsShow();
 $("#home_button").click(function () {
     $("#content > div").hide();
     $("#home").show();
-    document.cookie = "page=home;entry=yes ";
+
+    document.cookie = "page=home,entry=yes";
 });
 
 $("#courses_button").click(function () {
     $("#content > div").hide();
     $("#courses").show();
-    document.cookie = "page=courses;entry=yes";
+    document.cookie = "page=courses,entry=yes";
 });
 $("#account_button").click(function () {
     $("#content > div").hide();
     $("#account").show();
-    document.cookie = "page=account;entry=yes ";
+    document.cookie = "page=account,entry=yes";
 });
 $("#goals_button").click(function () {
     $("#content > div").hide();
     $("#goals").show();
-    document.cookie = "page=goals;entry=yes";
+    document.cookie = "page=goals,entry=yes";
 });
 $("#help_button").click(function () {
     $("#content > div").hide();
     $("#help").show();
-    document.cookie = "page=help;entry=yes";
+    document.cookie = "page=help,entry=yes";
 });
 
 $("#exit_button").click(function () {
     $("#content > div").hide();
     $("#home").show();
     buttonsHide();
-    document.cookie = "page=home;entry=no";
+    document.cookie = "page=home,entry=no";
 
 });
 
@@ -61,7 +62,7 @@ $("#final_entry_button").click(function () {
     $("#entry_panel").hide();
     $("#home").show();
     buttonsShow();
-    document.cookie = "page=home;entry=yes";
+    document.cookie = "page=home,entry=yes";
 
 });
 $("#final_register_button").click(function () {
@@ -69,7 +70,7 @@ $("#final_register_button").click(function () {
     $("#register_panel").hide();
     $("#home").show();
     buttonsShow();
-    document.cookie = "page=home;entry=yes";
+    document.cookie = "page=home,entry=yes";
 
 });
 function buttonsHide(){
@@ -90,7 +91,7 @@ function buttonsShow() {
 function getCookie(cname) {
     var name = cname + "=";
     var decodedCookie = decodeURIComponent(document.cookie);
-    var ca = decodedCookie.split(';');
+    var ca = decodedCookie.split(',');
     for(var i = 0; i <ca.length; i++) {
         var c = ca[i];
         while (c.charAt(0) == ' ') {
