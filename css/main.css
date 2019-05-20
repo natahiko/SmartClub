@@ -5,16 +5,23 @@
 body{
     margin:0!important;
     padding: 0!important;
+    background: #99eafd!important;
 }
 .menu{
-    width:17%;
-    float:left;
+    position: absolute;
+    top:0;
+    left:0;
+    width:17% ;
     background: #99eafd;
     background-image: url("../images/simpleBg.jpg");
     background-size: 260px;
-    min-height: calc(100vh - 24px);
-    padding-top: 24px;
+    padding: 20px 0;
     margin: 0;
+    box-shadow: 0 0 15px #000000;
+    border-left:none;
+    border-radius: 30px;
+    border-top-left-radius: 0;
+
 }
 
 
@@ -44,21 +51,53 @@ body{
 .entry_fields{
     background: #99eafd;
     overflow: auto;
-  margin: 10% 25%;
+    margin: 10% 25%;
     padding:2%;
 }
 
 .content{
-    width: 83%;
-    padding: 0;
+    width: 100%;
+
     margin:0;
-    float:right;
     background: #99eafd;
-    min-height:100vh;
+}
+.content >div{
+    padding: 0 8% 0 27%!important;
 }
 
 #logo{
-    width:30%;
+    width:300px;
+    animation-duration: 2s;
+    animation-name: slidein;
+}
+
+.ulli{
+    width:80%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@keyframes slidein {
+    0%{
+        margin-left: 100%;
+        width:100px;
+    }
+
+    100% {
+        margin-left: 0%;
+        width:300px;
+    }
 }
 
 

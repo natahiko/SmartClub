@@ -4,21 +4,6 @@
     <list default="true" id="b3036c8d-6c30-4a79-a862-414a5567f24b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/47970291-bulle-pop-art-bande-dessinée-fond-illustration-vectorielle.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/48540920-bulle-pop-art-bande-dessinée-fond-illustration-vectorielle.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/account_img.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/courses_img.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/free-40-education-icons.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/globe.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/goals_bg.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/goals_bg.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/goals_img.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/help_img.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/home_bg.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/home_bg.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/home_img.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/icon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/istockphoto-1008401240-1024x1024.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/kisspng-speech-balloon-comics-template-clip-art-comic-bubble-5acd842ba49c44.5503947215234181556743.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/pencil.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -61,15 +46,15 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="JavaScript Console" value="73" />
-          <entry key="css" value="1879" />
-          <entry key="html" value="1590" />
+          <entry key="css" value="2201" />
+          <entry key="html" value="1913" />
           <entry key="js" value="667" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="CSS" value="1879" />
-          <entry key="HTML" value="1590" />
+          <entry key="CSS" value="2201" />
+          <entry key="HTML" value="1913" />
           <entry key="JavaScript" value="740" />
         </counts>
       </usages-collector>
@@ -77,29 +62,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="161">
-              <caret line="25" column="8" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="8" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/css/main.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="253">
-              <caret line="14" column="2" lean-forward="true" selection-start-line="14" selection-start-column="2" selection-end-line="14" selection-end-column="2" />
+            <state relative-caret-position="231">
+              <caret line="37" column="49" selection-start-line="37" selection-start-column="49" selection-end-line="37" selection-end-column="49" />
+              <folding>
+                <element signature="n#style#0;n#p#1;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../Clouds/OmniBank/docs/css/smth.css">
+        <entry file="file://$PROJECT_DIR$/css/main.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1404">
-              <caret line="91" column="34" selection-start-line="91" selection-start-column="24" selection-end-line="91" selection-end-column="34" />
+            <state relative-caret-position="277">
+              <caret line="21" column="24" lean-forward="true" selection-start-line="21" selection-start-column="24" selection-end-line="21" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -160,8 +139,8 @@
       <list>
         <option value="$PROJECT_DIR$/main.css" />
         <option value="$PROJECT_DIR$/js/main.js" />
-        <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/css/main.css" />
+        <option value="$PROJECT_DIR$/index.html" />
       </list>
     </option>
   </component>
@@ -171,7 +150,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-9" />
     <option name="width" value="1152" />
     <option name="height" value="930" />
@@ -252,12 +231,12 @@
       <workItem from="1558159914542" duration="3584000" />
       <workItem from="1558170901079" duration="1112000" />
       <workItem from="1558182243055" duration="1511000" />
-      <workItem from="1558346528292" duration="5096000" />
+      <workItem from="1558346528292" duration="11806000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="34005000" />
+    <option name="totallyTimeSpent" value="40715000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
@@ -330,22 +309,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../Clouds/OmniBank/docs/css/smth.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1404">
+        <state relative-caret-position="782">
           <caret line="91" column="34" selection-start-line="91" selection-start-column="24" selection-end-line="91" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="25" column="8" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="8" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/css/main.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="14" column="2" lean-forward="true" selection-start-line="14" selection-start-column="2" selection-end-line="14" selection-end-column="2" />
+        <state relative-caret-position="277">
+          <caret line="21" column="24" lean-forward="true" selection-start-line="21" selection-start-column="24" selection-end-line="21" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="37" column="49" selection-start-line="37" selection-start-column="49" selection-end-line="37" selection-end-column="49" />
+          <folding>
+            <element signature="n#style#0;n#p#1;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
