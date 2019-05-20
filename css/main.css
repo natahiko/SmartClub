@@ -7,14 +7,14 @@ body{
     padding: 0!important;
 }
 .menu{
-    width:calc(20% - 2px);
+    width:17%;
     float:left;
-    background: #ed1729;
-    background-image: url("../images/menu_bg.png");
-    background-size: 500px;
-    min-height: calc(100vh - 44px);
-    padding: 30px 0;
-
+    background: #99eafd;
+    background-image: url("../images/simpleBg.jpg");
+    background-size: 260px;
+    min-height: calc(100vh - 24px);
+    padding-top: 24px;
+    margin: 0;
 }
 
 
@@ -26,22 +26,12 @@ body{
 }
 
 .menu img{
-    margin: 0 10%;
-    width: 80% ;
+    margin: 0 7.5%;
+    width: 75% ;
     height:auto;
 }
-#exit_button img{
-    margin: 0 35% 0 5%;
-    width:60%;
-}
-#exit_button img:hover,#exit_button img:focus{
-    transform: translateX(-15px);
-    transition: transform 2s;
-}
-.menu a:hover, a:focus, a img:hover,a img:focus{
-    transform: scale(1.2);
-    transition: transform 2s;
-}
+
+
 .entry_panel{
     position: absolute;
     top:0;
@@ -52,16 +42,76 @@ body{
     min-height:100vh;
 }
 .entry_fields{
-    background: #62a0b9;
+    background: #99eafd;
     overflow: auto;
   margin: 10% 25%;
     padding:2%;
 }
 
 .content{
-    width: 70%;
-    margin: 0 5%;
+    width: 83%;
+    padding: 0;
+    margin:0;
     float:right;
-    background: #faabec;
+    background: #99eafd;
     min-height:100vh;
+}
+
+#logo{
+    width:30%;
+}
+
+
+/* Pulse Grow */
+.pulse {
+    transform: perspective(1px) translateZ(0);
+}
+.pulse:hover, .pulse:focus, .pulse:active {
+    animation-name: hvr-pulse-grow;
+    animation-duration: .5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+@keyframes hvr-pulse-grow {
+    to {
+        transform: scale(1.2);
+        transition: scale 1s;
+    }
+}
+
+.leftmove{
+    transform: translateX(0);
+}
+.leftmove:hover,.leftmove:focus{
+
+    animation-name: move-left;
+    animation-duration: .5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+@keyframes move-left {
+    to {
+        transform: translateX(-28px);
+        transition: transform 1s;
+    }
+}
+
+.rightmove{
+    transform: translateX(0);
+}
+.rightmove:hover,.rightmove:focus{
+
+    animation-name: move-right;
+    animation-duration: .5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+@keyframes move-right {
+    to {
+        transform: translateX(20px);
+        transition: transform 1s;
+    }
 }
