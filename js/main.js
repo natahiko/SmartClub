@@ -49,7 +49,7 @@ $("#entry_button").click(function () {
 });
 $("#register_button").click(function () {
     $("#register_panel").show();
-
+    $("#register_login").val("");
 });
 $("#back_entry_button").click(function () {
     $("#entry_panel").hide();
@@ -91,7 +91,7 @@ function buttonsShow() {
 function getCookie(cname) {
     var name = cname + "=";
     var decodedCookie = decodeURIComponent(document.cookie);
-    var ca = decodedCookie.split(',');
+    var ca = decodedCookie.split(/[\,\;]/);
     for(var i = 0; i <ca.length; i++) {
         var c = ca[i];
         while (c.charAt(0) == ' ') {
@@ -101,5 +101,5 @@ function getCookie(cname) {
             return c.substring(name.length, c.length);
         }
     }
-    return "";
+    return "home";
 }
