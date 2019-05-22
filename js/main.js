@@ -45,6 +45,8 @@ $("#exit_button").click(function () {
 
 $("#entry_button").click(function () {
     $("#entry_panel").show();
+    $("#entry_login").val("");
+    $("#entry_password").val("");
 
 });
 $("#register_button").click(function () {
@@ -56,22 +58,6 @@ $("#back_entry_button").click(function () {
 });
 $("#back_register_button").click(function () {
     $("#register_panel").hide();
-});
-$("#final_entry_button").click(function () {
-    $("#content > div").hide();
-    $("#entry_panel").hide();
-    $("#home").show();
-    buttonsShow();
-    document.cookie = "page=home,entry=yes";
-
-});
-$("#final_register_button").click(function () {
-    $("#content > div").hide();
-    $("#register_panel").hide();
-    $("#home").show();
-    buttonsShow();
-    document.cookie = "page=home,entry=yes";
-
 });
 function buttonsHide(){
     $("#menu > a").hide();
