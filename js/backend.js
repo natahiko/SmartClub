@@ -42,13 +42,13 @@ $("#final_register_button").click(function () {
 function insertUser(login, password, name, age, email){
     $.get("./php/addUserToDB.php",{login: login, password: password,
         name: name, age: age, email: email}, function (data) {
-        alert(data);
         $("#content > div").hide();
         $("#register_panel").hide();
         $("#home").show();
         buttonsShow();
         sessionStorage.setItem("page", "home");
         sessionStorage.setItem("entry","yes" );
+        sessionStorage.setItem("login",login );
     });
 }
 
@@ -112,6 +112,7 @@ $("#final_entry_button").click(function () {
             buttonsShow();
             sessionStorage.setItem("page", "home");
             sessionStorage.setItem("entry","yes" );
+            sessionStorage.setItem("login",login );
         }
     });
 });
