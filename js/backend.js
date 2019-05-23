@@ -5,6 +5,7 @@ $("#final_register_button").click(function () {
      var login = $("#register_login").val();
      var age = $("#register_age").val();
      var name = $("#register_name").val();
+    $("#register-password2").val("");
      if(!validateEmail(email)) {
          alert("Невірно вказана Електронна пошта!");
          return;
@@ -19,7 +20,7 @@ $("#final_register_button").click(function () {
          $("#register_login").css("background", "#FFD2D2");
          return;
      }
-    if(age==""){
+    if(age=="" || age>99 || age<1){
         $("#register_age").css("background", "#FFD2D2");
         return;
     }
@@ -49,6 +50,12 @@ function insertUser(login, password, name, age, email){
         sessionStorage.setItem("page", "home");
         sessionStorage.setItem("entry","yes" );
         sessionStorage.setItem("login",login );
+        $("#register_login").val("");
+        $("#register-password2").val("");
+        $("#register-password").val("");
+        $("#register_age").val("");
+        $("#register_email").val("");
+        $("#register_name").val("");
     });
 }
 
@@ -57,6 +64,13 @@ $("#register_login").keypress(function () {
 });
 $("#register_age").keypress(function () {
     $("#register_age").css("background", "#FFFFFF");
+});
+
+$("#register_login").keyup(function () {
+    var age  = $("#register_login").val();
+    if(age>99 || age<1)
+        $("#register_login").css("background", "#FFD2D2");
+    else $("#register_login").css("background", "#FFFFFF");
 });
 
 $("#register-password2").keyup(function () {
@@ -72,7 +86,8 @@ $("#register-password2").keyup(function () {
 
 $("#register_email").keyup(function () {
     var email = $("#register_email").val();
-    if(email=="")
+
+    if(email=="" || email.length<13)
         $("#register_email").css("background","#FFFFFF");
     else if (validateEmail(email))
         $("#register_email").css("background","#BFFFC7");
