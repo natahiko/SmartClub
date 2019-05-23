@@ -1,26 +1,24 @@
 <?php
 $login = $_REQUEST["login"];
-/*$servername = "localhost";
-$username = "root";
-$password = "2303";
-$dbname = "my_users";
 
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-} 
+define("DB_HOST", "localhost");
+define("DB_USER", "root");
+define("DB_PASSWORD", "mysql");
 
-$sql = "INSERT INTO users (login, email, password, age)
-VALUES ('John', 'Doe', 'john@example.com')";
+$conn = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD);
 
-if ($conn->query($sql) === TRUE) {
-    echo "New record created successfully";
-} else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
 }
 
-$conn->close();*/
-echo "true";
+$sql = "SELECT * FROM Smartman.users WHERE login= '$login' ";
+$result = $conn->query($sql);
+
+if ($result->num_rows> 0) {
+    echo "true" ;
+} else{
+    echo "false";
+} 
+
+mysqli_close($conn);
 ?>

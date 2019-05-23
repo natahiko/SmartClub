@@ -22,19 +22,30 @@ $("#final_register_button").click(function () {
         $("#register_age").css("background", "#FFD2D2");
         return;
     }
-    $.get("./php/checkUser.php?login="+login, function (data) {
-        if(data=='true') {
+    $.get("./php/checkUser.php",{login: login, password: password,
+    name: "name", age: age, email: email}, function (data) {
+        if(data=="true") {
             alert("Користувач з таким логіном вже існує!");
             return;
-        } alert(data);
-
+        } else{
+            insertUser(login,password,"name",age,email)
+        }
     });
-    $("#content > div").hide();
-    $("#register_panel").hide();
-    $("#home").show();
-    buttonsShow();
-    document.cookie = "page=home,entry=yes";
+
 });
+
+function insertUser(login, password, name, age, email){
+    $.get("./php/addUserToDB.php",{login: login, password: password,
+        name: "name", age: age, email: email}, function (data) {
+        alert(data);
+        $("#content > div").hide();
+        $("#register_panel").hide();
+        $("#home").show();
+        buttonsShow();
+        sessionStorage.setItem("page", "home");
+        sessionStorage.setItem("entry","yes" );
+    });
+}
 
 $("#register_login").keypress(function () {
     $("#register_login").css("background", "#FFFFFF");
@@ -95,5 +106,6 @@ $("#final_entry_button").click(function () {
     $("#entry_panel").hide();
     $("#home").show();
     buttonsShow();
-    document.cookie = "page=home,entry=yes";
+    sessionStorage.setItem("page", "home");
+    sessionStorage.setItem("entry","yes" );
 });
