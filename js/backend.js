@@ -1,17 +1,18 @@
 $("#final_register_button").click(function () {
      var email = $("#register_email").val();
+     var password = $("#register-password").val();
+     var password2 = $("#register-password2").val();
+     var login = $("#register_login").val();
+     var age = $("#register_age").val();
+     var name = $("#register_name").val();
      if(!validateEmail(email)) {
          alert("Невірно вказана Електронна пошта!");
          return;
      }
-     var password = $("#register-password").val();
-     var password2 = $("#register-password2").val();
      if(password=="" || password2!=password){
          alert("Перевірте правильність паролю!");
          return;
      }
-    var login = $("#register_login").val();
-    var age = $("#register_age").val();
      if(login==""){
          if(age=="")
              $("#register_age").css("background", "#FFD2D2");
@@ -22,13 +23,17 @@ $("#final_register_button").click(function () {
         $("#register_age").css("background", "#FFD2D2");
         return;
     }
+    if(name==""){
+        $("#register_name").css("background", "#FFD2D2");
+        return;
+    }
     $.get("./php/checkUser.php",{login: login, password: password,
-    name: "name", age: age, email: email}, function (data) {
+    name: name, age: age, email: email}, function (data) {
         if(data=="true") {
             alert("Користувач з таким логіном вже існує!");
             return;
         } else{
-            insertUser(login,password,"name",age,email)
+            insertUser(login,password, name,age,email)
         }
     });
 
@@ -36,7 +41,7 @@ $("#final_register_button").click(function () {
 
 function insertUser(login, password, name, age, email){
     $.get("./php/addUserToDB.php",{login: login, password: password,
-        name: "name", age: age, email: email}, function (data) {
+        name: name, age: age, email: email}, function (data) {
         alert(data);
         $("#content > div").hide();
         $("#register_panel").hide();
@@ -93,19 +98,20 @@ $("#final_entry_button").click(function () {
     var login = $("#entry_login").val();
     var password = $("#entry_password").val();
     if(login=="" || password==""){
-        alert("Некоректно введены логін або пароль!");
+        alert("Некоректно введені логін або пароль!");
         return;
     }
     $.get("./php/checkLoginPassword.php",{login: login, password: password}, function (data) {
-        if(!data){
-            alert("Некоректно введены логін або пароль!");
+        if(data=="false"){
+            alert("Некоректно введені логін або пароль!");
             return;
-        } //else alert(data);
+        } else{
+            $("#content > div").hide();
+            $("#entry_panel").hide();
+            $("#home").show();
+            buttonsShow();
+            sessionStorage.setItem("page", "home");
+            sessionStorage.setItem("entry","yes" );
+        }
     });
-    $("#content > div").hide();
-    $("#entry_panel").hide();
-    $("#home").show();
-    buttonsShow();
-    sessionStorage.setItem("page", "home");
-    sessionStorage.setItem("entry","yes" );
 });

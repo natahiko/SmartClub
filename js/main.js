@@ -2,7 +2,8 @@
     $("#content > div").hide();
     $("#entry_panel").hide();
     $("#register_panel").hide();
-    if(sessionStorage.getItem("page")==null) sessionStorage.setItem("page","home");
+if(sessionStorage.getItem("page")==null) sessionStorage.setItem("page","home");
+if(sessionStorage.getItem("entry")==null) sessionStorage.setItem("entry","no");
     $("#"+sessionStorage.getItem("page")).show();
     if(sessionStorage.getItem("entry")=="no") buttonsHide();
     else if(sessionStorage.getItem("entry")=="yes") buttonsShow();

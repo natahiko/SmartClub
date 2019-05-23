@@ -16,6 +16,8 @@ $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD);
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
+//encrypt password
+$password = sha1($password);
 
 $sql = "INSERT INTO Smartman.users (login, password, name, age, email) 
 VALUES ('$login', '$password', '$name','$age', '$email');";
