@@ -44,7 +44,7 @@ body{
     top:0;
     left:0;
     width:100%;
-    z-index:1000;
+    z-index:-1;
     background: rgba(238, 238, 255, 0.54);
     min-height:100vh;
 }

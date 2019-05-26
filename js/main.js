@@ -1,77 +1,74 @@
 /*перша сторінка при загрузці*/
-$("#content > div").hide();
-$("#entry_panel").hide();
-$("#register_panel").hide();
-$("#"+getCookie("page")).show();
-if(getCookie("entry")!=="yes") buttonsHide();
-else if(getCookie("entry")==="yes") buttonsShow();
+    $("#content > div").hide();
+    $("#entry_panel").hide();
+    $("#register_panel").hide();
+if(sessionStorage.getItem("page")==null) sessionStorage.setItem("page","home");
+if(sessionStorage.getItem("entry")==null) sessionStorage.setItem("entry","no");
+    $("#"+sessionStorage.getItem("page")).show();
+    if(sessionStorage.getItem("entry")=="no") buttonsHide();
+    else if(sessionStorage.getItem("entry")=="yes") buttonsShow();
 
 /*перехід між сторінками при натисканні на кнопки меню */
 $("#home_button").click(function () {
     $("#content > div").hide();
     $("#home").show();
-
-    document.cookie = "page=home,entry=yes";
+    sessionStorage.setItem("page", "home");
+    sessionStorage.setItem("entry","yes" );
 });
 
 $("#courses_button").click(function () {
     $("#content > div").hide();
     $("#courses").show();
-    document.cookie = "page=courses,entry=yes";
+    sessionStorage.setItem("page", "courses");
+    sessionStorage.setItem("entry","yes" );
 });
 $("#account_button").click(function () {
     $("#content > div").hide();
     $("#account").show();
-    document.cookie = "page=account,entry=yes";
+    sessionStorage.setItem("page", "account");
+    sessionStorage.setItem("entry","yes" );
 });
 $("#goals_button").click(function () {
     $("#content > div").hide();
     $("#goals").show();
-    document.cookie = "page=goals,entry=yes";
+    sessionStorage.setItem("page", "goals");
+    sessionStorage.setItem("entry","yes" );
 });
 $("#help_button").click(function () {
     $("#content > div").hide();
     $("#help").show();
-    document.cookie = "page=help,entry=yes";
+    sessionStorage.setItem("page", "help");
+    sessionStorage.setItem("entry","yes" );
 });
 
 $("#exit_button").click(function () {
     $("#content > div").hide();
     $("#home").show();
     buttonsHide();
-    document.cookie = "page=home,entry=no";
+    sessionStorage.setItem("page", "home");
+    sessionStorage.setItem("entry","no" );
 
 });
 
 $("#entry_button").click(function () {
     $("#entry_panel").show();
+    $("#entry_login").val("");
+    $("#entry_password").val("");
+    $("#entry_panel").css("z-index","1000");
 
 });
 $("#register_button").click(function () {
     $("#register_panel").show();
+    $("#register_panel").css("z-index","1000");
     $("#register_login").val("");
 });
 $("#back_entry_button").click(function () {
     $("#entry_panel").hide();
+    $("#entry_panel").css("z-index","-1");
 });
 $("#back_register_button").click(function () {
     $("#register_panel").hide();
-});
-$("#final_entry_button").click(function () {
-    $("#content > div").hide();
-    $("#entry_panel").hide();
-    $("#home").show();
-    buttonsShow();
-    document.cookie = "page=home,entry=yes";
-
-});
-$("#final_register_button").click(function () {
-    $("#content > div").hide();
-    $("#register_panel").hide();
-    $("#home").show();
-    buttonsShow();
-    document.cookie = "page=home,entry=yes";
-
+    $("#register_panel").css("z-index","-1");
 });
 function buttonsHide(){
     $("#menu > a").hide();
@@ -86,20 +83,4 @@ function buttonsShow() {
     $("#goals_button").show();
     $("#help_button").show();
     $("#exit_button").show();
-}
-
-function getCookie(cname) {
-    var name = cname + "=";
-    var decodedCookie = decodeURIComponent(document.cookie);
-    var ca = decodedCookie.split(/[\,\;]/);
-    for(var i = 0; i <ca.length; i++) {
-        var c = ca[i];
-        while (c.charAt(0) == ' ') {
-            c = c.substring(1);
-        }
-        if (c.indexOf(name) == 0) {
-            return c.substring(name.length, c.length);
-        }
-    }
-    return "home";
 }
