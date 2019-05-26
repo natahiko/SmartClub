@@ -37,7 +37,14 @@ $("#final_register_button").click(function () {
             insertUser(login,password, name,age,email)
         }
     });
-
+    //костиль
+    $("#content > div").hide();
+    $("#register_panel").hide();
+    $("#home").show();
+    buttonsShow();
+    sessionStorage.setItem("page", "home");
+    sessionStorage.setItem("entry","yes" );
+    sessionStorage.setItem("login",login );
 });
 
 function insertUser(login, password, name, age, email){
@@ -130,4 +137,12 @@ $("#final_entry_button").click(function () {
             sessionStorage.setItem("login",login );
         }
     });
+    //костиль
+    $("#content > div").hide();
+    $("#entry_panel").hide();
+    $("#home").show();
+    buttonsShow();
+    sessionStorage.setItem("page", "home");
+    sessionStorage.setItem("entry","yes" );
+    sessionStorage.setItem("login",login );
 });
