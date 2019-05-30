@@ -4,39 +4,95 @@
     <meta charset="UTF-8">
     <title></title>
     <link href="css/main.css" rel="stylesheet" media="screen">
-
+    <link href="css/animations.css" rel="stylesheet" media="screen">
+    <link href="css/account.css" rel="stylesheet" media="screen">
+    <link href="css/courses.css" rel="stylesheet" media="screen">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 </head>
 <body>
 <div id="menu" class="menu">
-    <a id="entry_button" href="#content" ><img src="images/entry_bg.png" class="rightmove" ></a>
+    <a id="entry_button" href="#content"><img src="images/entry_bg.png" class="rightmove"></a>
     <a id="register_button" href="#content"><img src="images/register_bg.png" class="rightmove"></a>
-    <a id="home_button" href="#content" ><img src="images/home_bg.png"class="pulse" ></a>
-    <a id="account_button" href="#content" ><img src="images/account_bg.png"class="pulse"></a>
-    <a id="courses_button" href="#content" ><img src="images/courses_bg.png"class="pulse"></a>
-    <a id="goals_button" href="#content" ><img src="images/goals_bg.png"class="pulse"></a>
-    <!--<a id="help_button" href="#content" ></a>-->
-    <a id="exit_button" href="#content" ><img src="images/exit_bg.png"class="leftmove"></a>
+    <a id="home_button" href="#content"><img src="images/home_bg.png" class="pulse"></a>
+    <a id="account_button" href="#content"><img src="images/account_bg.png" class="pulse"></a>
+    <a id="courses_button" href="#content"><img src="images/courses_bg.png" class="pulse"></a>
+    <a id="goals_button" href="#content"><img src="images/goals_bg.png" class="pulse"></a>
+    <a id="exit_button" href="#content"><img src="images/exit_bg.png" class="leftmove"></a>
 </div>
 <div id="content" class="content">
 
     <div id="home">
-        <img id="logo" src="images/logo.png"> <p>  Навчальний клуб СмартМен - віртуальна платформа курсів, призначена для допомоги дітям
-            у вивченні базових знань та підготовки до школи.
-        Ми пропонуємо вам і вашим дітям вчитись разом з нами.
-        Учитись весело, легко та цікаво, і зовсім неважливо, вдома чи деінде.
-            </p>
-      <div>
-          <img src="images/main_ulli.png" class="ulli">
-    </div>
-
-        <p style="text-align: center;">Весело дітям - легко батькам!</p>
         <br>
 
+        <img id="logo" src="images/logo.png" class="logo tada">
+        <p class="text-center slogan">Весело дітям - легко батькам!</p>
+        <br>
+        <p style=" font-size:25px;">
+            Навчальний клуб СмартМен - вiртуальна платформа курсiв, призначена для допомоги дiтям
+            у вивченнi базових знань та пiдготовки до школи.
+            Ми пропонуємо вам i вашим дiтям вчитись разом з нами.
+            Учитись весело, легко та цiкаво, i зовсім неважливо, вдома чи деiнде.
+        </p>
+        <div>
+            <img src="images/main_ulli.png" class="ulli">
+        </div>
+        <br>
+        <p class="text-center" style="color: #563d7c;">Потрібна допомога?
+            <a id="help_button" href="#content" class="btn btn-outline-info ">Вам сюди!</a>
+        </p>
 
     </div>
 
     <div id="account">
-        <p>Мій акаунт</p>
+        <div class="text-center slogan" style=" font-size: 30px;">Мій акаунт</div>
+        <div id="account_flash" class="account_flash">
+            <div id="avatar_container"><img id="avatar" src="images/avatars/catwoman.png">
+
+            </div>
+            <div id="account_fields">
+
+                <p id="name">Наталія Шкаровська</p>
+                <br>
+                <a id="second_goals_button" href="#content" class="btn btn-outline-success ">Досягнення</a>
+                <a id="second_course_button" href="#content" class="btn btn-outline-secondary ">Курси</a>
+                <br> <br>
+                <div class="account_info">
+                    <p>Вік:</p><input id="age_input" type="number" value="7" disabled>
+                    <p>Логін:</p><input id="login_input" type="text" value="flower777" disabled>
+                    <p>Пошта:</p><input id="email_input" type="text" value="nshkarovska@gmail.com" disabled>
+
+
+                </div>
+
+            </div>
+            <div style="text-align: right;">
+                <div class="change_password_container card-header" id="headingOne">
+
+                    <button id="change_password_spoiler" class="btn btn-outline-info" data-toggle="collapse"
+                            data-target="#collapseOne"
+                            aria-expanded="false" aria-controls="collapseOne">
+                        змінити пароль
+                    </button>
+
+                    <div id="collapseOne" class="collapse" aria-labelledby="headingOne">
+                        <div class="card-body">
+                            <p>введіть старий пароль:</p>
+                            <input type="password" class="form-control">
+                            <p>введіть новий пароль:</p>
+                            <input type="password" class="form-control">
+                            <p>повторіть новий пароль:</p>
+                            <input type="password" class="form-control">
+                        </div>
+                    </div>
+
+                </div>
+                <button id="edit_account_button" class="btn btn-outline-secondary">редагувати інформацію</button>
+                <button id="delete_account_button" class="btn btn-outline-danger">видалити акаунт</button>
+                <button id="save_account_button" class="btn btn-outline-success">зберегти зміни</button>
+            </div>
+        </div>
+
     </div>
     <div id="courses">
         <p>Мої курси</p>
@@ -46,40 +102,47 @@
     </div>
 
     <div id="help"><p>Допомога користувачу</p></div>
-    <hr>
-    <a href="https://www.instagram.com/gingermias/">Instagram</a>
-    <br>
+
 
 </div>
-<div id="entry_panel" class="entry_panel" >
+
+
+<div id="entry_panel" class="entry_panel">
     <div id="entry" class="entry_fields">
-        <a id="back_entry_button" href="#content">Назад</a>
-        <br>
-        <br>
-        <span>Логін</span><br><input id="entry_login" type="text"> <br>
-        <span>Пароль</span><br><input id="entry_password" type="password"> <br>
-        <a id="final_entry_button" href="#content">Увійти</a>
+        <span>Логін:</span><br><input id="entry_login" type="text" class="form-control">
+        <span>Пароль:</span><br><input id="entry_password" type="password" style="margin-bottom: 10px;"
+                                       class="form-control">
+        <a id="back_entry_button" href="#content" class="back_button">&#10539;</a>
+        <a id="final_entry_button" href="#content" class="btn btn-success entry_long">Увійти</a>
     </div>
 </div>
-
 <div id="register_panel" class="entry_panel">
     <div id="register" class="entry_fields">
-        <a id="back_register_button" href="#content">Назад</a>
-        <br>
-        <br>
-        <span>Електронна пошта</span><br><input id="register_email" type="email"> <br>
-        <span>Ім'я користувача</span><br><input id="register_name" type="text" maxlength="255"> <br>
-        <span>Логін</span><br><input id="register_login" type="text" maxlength="20"> <br>
-        <span>Вік</span><br><input id="register_age" type="number" min="1" max="99"> <br>
-        <span>Пароль</span><br><input id="register-password" type="password"maxlength="40"> <br>
-        <span>Підтвердіть пароль</span><br><input id="register-password2" type="password" maxlength="40"> <br>
-        <a id="final_register_button" href="#content">Зареєструватись</a>
+
+
+        <span>Електронна пошта:</span><br><input id="register_email" type="email" class="form-control">
+        <span>Ім'я користувача:</span><br><input id="register_name" type="text" maxlength="255" class="form-control">
+        <span>Логін:</span><br><input id="register_login" type="text" maxlength="20" class="form-control">
+        <span>Вік:</span><br><input id="register_age" type="number" min="1" max="99" class="form-control">
+        <span>Пароль:</span><br><input id="register-password" type="password" maxlength="40" class="form-control">
+        <span>Підтвердіть пароль:</span><br><input style="margin-bottom: 10px;" id="register-password2" type="password"
+                                                   maxlength="40" class="form-control">
+        <a id="back_register_button" href="#content" class="back_button">&#10539;</a>
+        <a id="final_register_button" class="btn btn-success entry_long " href="#content">Зареєструватись</a>
     </div>
 </div>
 
 
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<script src="js/main.js"> </script>
-<script src="js/backend.js"> </script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+<script src="js/main.js"></script>
+<script src="js/backend.js"></script>
 </body>
 </html>

@@ -1,0 +1,125 @@
+#account{
+    width:74%;
+    margin:0 13%;
+}
+
+#account > div{
+    width:100%;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+    background: #d0eaf6;
+    padding:5% 5% 5% 2%;
+    margin-bottom: 5%;
+}
+#name{
+    font-size: 28px;
+    text-align: left;
+}
+.account_flash p{
+font-size: 20px;
+
+}
+.account_flash input{
+     box-shadow: none;
+     background: transparent;
+     border: none;
+    font-size: 20px;
+    padding-left: 20px;
+ }
+input:enabled{
+    border: 1px solid gray;
+    border-radius: 5px;
+}
+input:focus,textarea:focus ,select:focus{
+    box-shadow: inset 0 0 6px #858585 !important;
+}
+
+#avatar_container{
+    float: left;
+    width:30%;
+    margin: 0 3% 0 0;
+}
+#avatar{
+    width:100%;
+}
+#account_fields{
+    margin: 0 0 0 33% ;
+
+}
+#account_fields p{
+    margin:0;
+}
+
+#second_goals_button{
+    color: #106b1b;
+    border-color: #106b1b;
+    padding: 4px 25px;
+    font-size: 18px;
+
+}
+
+#second_goals_button:hover, #second_goals_button:focus{
+    box-shadow: #106b1b!important;
+    color:white;
+    background: #106b1b;
+}
+
+#second_course_button{
+    font-size: 18px;
+
+    padding: 4px 25px;
+    color: #563d7c;
+    border-color: #563d7c;
+}
+
+#second_course_button:hover, #second_course_button:focus{
+    box-shadow: #563d7c!important;
+    color:white;
+    background: #563d7c;
+}
+
+.account_info p{
+    width:100px!important;
+    display: inline-block;
+}
+.account_flash button{
+    font-size: 16px;!important;
+    padding: 4px 18px!important;
+}
+#save_account_button{
+    display: none;
+    margin-top: 30px;
+}
+
+#edit_account_button:hover{
+    background: #929292;
+    border-color: #bdbdbd;
+}
+
+.change_password_container{
+    width:69%;
+    padding: 0!important;
+    margin: 30px 0 30px 31% !important;
+}
+#headingOne p{
+    text-align: left;
+    font-size: 16px!important;
+    margin:0!important;
+    width:100%!important;
+
+}
+#headingOne input{
+    font-size: 16px;
+   padding: 5px!important;
+    height: auto;
+}
+
+#headingOne input:focus{
+   background: transparent;
+}
+#change_password_spoiler{
+    width:100%;
+    height: 100%;
+    margin: 0;
+    font-size: 16px;!important;
+    padding: 4px 18px!important;
+}

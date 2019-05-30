@@ -1,29 +1,46 @@
-*{
-    font-family: "Segoe UI";
-    font-size:22px;
+@font-face{
+    font-family:Blambot;
+    src:url("../files/Blambot.ttf");
 }
+
+*{
+    font-family: "Blambot";
+    font-size:22px;
+    border-radius: 5px;
+
+}
+
+#entry_panel input,#register_panel input,textarea{
+    padding-top: 0!important;
+    padding-bottom: 0!important;
+}
+#entry_panel input,#register_panel input{
+    height: 35px!important;
+}
+#entry_panel input,#register_panel input:focus,textarea:focus ,select:focus{
+    box-shadow: 0 0 7px #10791d !important;
+    border: 1px solid #0e6919 !important;
+}
+
 body{
     margin:0!important;
     padding: 0!important;
-    background: #99eafd!important;
+    background: #99eafd url("../images/bubblecomic.jpg") !important;
+    background-size: 260px!important;
 }
 .menu{
-    position: absolute;
+    position: fixed;
+    width:17%;
+    height:92%;
     top:0;
     left:0;
-    width:17% ;
-    background: #99eafd;
-    background-image: url("../images/simpleBg.jpg");
-    background-size: 260px;
-    padding: 20px 0;
-    margin: 0;
-    box-shadow: 0 0 15px #000000;
-    border-left:none;
-    border-radius: 30px;
-    border-top-left-radius: 0;
+    margin:2%;
+    background: #8ad3e8;
+    padding: 17px 0;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+    border-radius: 5px;
 
 }
-
 
 .menu a{
     text-decoration: none;
@@ -40,117 +57,101 @@ body{
 
 
 .entry_panel{
-    position: absolute;
+    position:fixed;
+    z-index:1031;
+    top:0;
+    left:0;
+    display:none;
+    width:100vw;
+    height:100vh;
+    background: rgba(132, 132, 132, 0.5);
+
+}
+.entry_fields{
+    width:40vw;
+    height:90vh;
+    padding:3vh 2vw;
+    margin: 2vh 28vw;
+    background: #fecf0b;
+    z-index:1032;
+    overflow:auto;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+}
+
+#entry{
+    height:46%;
+    margin: 7% 28vw;
+}
+
+.back_button{
+    position:absolute;
     top:0;
     left:0;
     width:100%;
-    z-index:-1;
-    background: rgba(238, 238, 255, 0.54);
-    min-height:100vh;
-}
-.entry_fields{
-    background: #99eafd;
+    min-height: 100vh;
     overflow: auto;
-    margin: 10% 25%;
-    padding:2%;
+    z-index:-1;
+    background: rgba(157, 157, 157, 0.5);
+    color: rgba(255, 255, 255, 0.75);
+    text-decoration: none;
+    padding-left: 25px;
+    font-size: 50px;
+
+}
+
+.back_button:hover,.back_button:focus{
+    background: rgba(145, 145, 145, 0.5);
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: none;
+
+}
+
+.entry_long{
+    height:50px;
+    width:100%;
+    padding:5px 5%;
+    background: #94c120!important;
 }
 
 .content{
-    width: 100%;
-
-    margin:0;
-    background: #99eafd;
-}
-.content >div{
-    padding: 0 8% 0 27%!important;
+   width: 67%;
+    margin: 0 5% 0 27%;
+    padding: 2% 0;
+    background: transparent;
 }
 
-#logo{
-    width:300px;
-    animation-duration: 2s;
-    animation-name: slidein;
+
+/* home page */
+#home {
+    width:90%;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+    background: #d0eaf6;
+    padding:5%;
 }
+.logo{
+    height:200px;
+   float:right;
+}
+.slogan{
+    font-size: 26px;
+    transition: 1s;
+}
+
+
+
 
 .ulli{
-    width:80%;
+    width:95%;
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-@keyframes slidein {
-    0%{
-        margin-left: 100%;
-        width:100px;
-    }
-
-    100% {
-        margin-left: 0%;
-        width:300px;
-    }
+#help_button{
+   color: #563d7c;
+    border-color: #563d7c;
 }
 
-
-/* Pulse Grow */
-.pulse {
-    transform: perspective(1px) translateZ(0);
-}
-.pulse:hover, .pulse:focus, .pulse:active {
-    animation-name: hvr-pulse-grow;
-    animation-duration: .5s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-}
-@keyframes hvr-pulse-grow {
-    to {
-        transform: scale(1.2);
-        transition: scale 1s;
-    }
-}
-
-.leftmove{
-    transform: translateX(0);
-}
-.leftmove:hover,.leftmove:focus{
-
-    animation-name: move-left;
-    animation-duration: .5s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-}
-@keyframes move-left {
-    to {
-        transform: translateX(-28px);
-        transition: transform 1s;
-    }
-}
-
-.rightmove{
-    transform: translateX(0);
-}
-.rightmove:hover,.rightmove:focus{
-
-    animation-name: move-right;
-    animation-duration: .5s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-}
-@keyframes move-right {
-    to {
-        transform: translateX(20px);
-        transition: transform 1s;
-    }
+#help_button:hover, #help_button:focus{
+    box-shadow: #563d7c;
+    color:white;
+    background: #563d7c;
 }

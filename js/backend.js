@@ -1,25 +1,25 @@
 $("#final_register_button").click(function () {
-     var email = $("#register_email").val();
-     var password = $("#register-password").val();
-     var password2 = $("#register-password2").val();
-     var login = $("#register_login").val();
-     var age = $("#register_age").val();
-     var name = $("#register_name").val();
+    var email = $("#register_email").val();
+    var password = $("#register-password").val();
+    var password2 = $("#register-password2").val();
+    var login = $("#register_login").val();
+    var age = $("#register_age").val();
+    var name = $("#register_name").val();
     $("#register-password2").val("");
-     if(!validateEmail(email)) {
-         alert("Невірно вказана Електронна пошта!");
-         return;
-     }
-     if(password=="" || password2!=password){
-         alert("Перевірте правильність паролю!");
-         return;
-     }
-     if(login==""){
-         if(age=="")
-             $("#register_age").css("background", "#FFD2D2");
-         $("#register_login").css("background", "#FFD2D2");
-         return;
-     }
+    if(!validateEmail(email)) {
+        alert("Невірно вказана Електронна пошта!");
+        return;
+    }
+    if(password=="" || password2!=password){
+        alert("Перевірте правильність паролю!");
+        return;
+    }
+    if(login==""){
+        if(age=="")
+            $("#register_age").css("background", "#FFD2D2");
+        $("#register_login").css("background", "#FFD2D2");
+        return;
+    }
     if(age=="" || age>99 || age<1){
         $("#register_age").css("background", "#FFD2D2");
         return;
@@ -28,16 +28,23 @@ $("#final_register_button").click(function () {
         $("#register_name").css("background", "#FFD2D2");
         return;
     }
-    $.get("./php/checkUser.php",{login: login, password: password,
-    name: name, age: age, email: email}, function (data) {
+   /* $.get("./php/checkUser.php",{login: login, password: password,
+        name: name, age: age, email: email}, function (data) {
         if(data=="true") {
             alert("Користувач з таким логіном вже існує!");
             return;
         } else{
             insertUser(login,password, name,age,email)
         }
-    });
-
+    });*/
+    //костиль
+    $("#content > div").hide();
+    $("#register_panel").hide();
+    $("#home").show();
+    buttonsShow();
+    sessionStorage.setItem("page", "home");
+    sessionStorage.setItem("entry","yes" );
+    sessionStorage.setItem("login",login );
 });
 
 function insertUser(login, password, name, age, email){
@@ -97,7 +104,7 @@ $("#register_email").keyup(function () {
 
 function validateEmail(email) {
     var pattern  = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-return pattern .test(email);
+    return pattern .test(email);
 }
 
 function sleep(milliseconds) {
@@ -116,7 +123,7 @@ $("#final_entry_button").click(function () {
         alert("Некоректно введені логін або пароль!");
         return;
     }
-    $.get("./php/checkLoginPassword.php",{login: login, password: password}, function (data) {
+  /*  $.get("./php/checkLoginPassword.php",{login: login, password: password}, function (data) {
         if(data=="false"){
             alert("Некоректно введені логін або пароль!");
             return;
@@ -129,5 +136,13 @@ $("#final_entry_button").click(function () {
             sessionStorage.setItem("entry","yes" );
             sessionStorage.setItem("login",login );
         }
-    });
+    });*/
+    //костиль
+    $("#content > div").hide();
+    $("#entry_panel").hide();
+    $("#home").show();
+    buttonsShow();
+    sessionStorage.setItem("page", "home");
+    sessionStorage.setItem("entry","yes" );
+    sessionStorage.setItem("login",login );
 });

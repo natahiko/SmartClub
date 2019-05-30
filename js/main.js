@@ -22,6 +22,12 @@ $("#courses_button").click(function () {
     sessionStorage.setItem("page", "courses");
     sessionStorage.setItem("entry","yes" );
 });
+$("#second_course_button").click(function () {
+    $("#content > div").hide();
+    $("#courses").show();
+    sessionStorage.setItem("page", "courses");
+    sessionStorage.setItem("entry","yes" );
+});
 $("#account_button").click(function () {
     $("#content > div").hide();
     $("#account").show();
@@ -29,6 +35,12 @@ $("#account_button").click(function () {
     sessionStorage.setItem("entry","yes" );
 });
 $("#goals_button").click(function () {
+    $("#content > div").hide();
+    $("#goals").show();
+    sessionStorage.setItem("page", "goals");
+    sessionStorage.setItem("entry","yes" );
+});
+$("#second_goals_button").click(function () {
     $("#content > div").hide();
     $("#goals").show();
     sessionStorage.setItem("page", "goals");
@@ -84,3 +96,42 @@ function buttonsShow() {
     $("#help_button").show();
     $("#exit_button").show();
 }
+
+
+/*edit profile button*/
+$("#edit_account_button").click(function () {
+    $("#edit_account_button").hide();
+    $("#delete_account_button").hide();
+    $("#headingOne").hide();
+    $("#save_account_button").css(
+        {display:'inline-block'});
+    $("#age_input").removeAttr('disabled');
+    $("#login_input").removeAttr('disabled');
+    $("#email_input").removeAttr('disabled');
+});
+
+$("#save_account_button").click(function () {
+    $("#edit_account_button").css(
+        {display:'inline-block'});
+    $("#delete_account_button").css(
+        {display:'inline-block'});
+    $("#save_account_button").css(
+        {display:'none'});
+    $("#headingOne").show();
+
+    $("#age_input").attr('disabled', 'disabled');
+    $("#login_input").attr('disabled', 'disabled');
+    $("#email_input").attr('disabled', 'disabled');
+
+    alert("add values from input to database");
+});
+
+
+
+/*TODO for @natahiko delete account button*/
+
+
+$("#delete_account_button").click(function () {
+    alert("TODO delete");
+
+});
