@@ -3,36 +3,36 @@
     animation-duration: 4s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
-    animation-direction: alternate;
+    animation-direction: normal;
 
 }
 
 @keyframes rainbow {
 
     0% {
-        text-shadow: 5px 5px 5px rgba(0, 191, 255, 0.8);
+        box-shadow: 0 0 10px rgba(0, 191, 255, 0.8);
     }
     14% {
-        text-shadow: 5px 5px 5px rgba(0, 104, 255, 0.8);
+        box-shadow: 0 0 10px rgba(0, 104, 255, 0.8);
     }
     28% {
-        text-shadow: 5px 5px 5px rgba(122, 0, 229, 0.8);
+        box-shadow: 0 0 10px rgba(122, 0, 229, 0.8);
     }
     43% {
-        text-shadow: 5px 5px 5px rgba(211, 0, 201, 0.8);
+        box-shadow: 0 0 10px rgba(211, 0, 201, 0.8);
     }
     57% {
-        text-shadow: 5px 5px 5px rgba(255, 0, 0, 0.8);
+        box-shadow: 0 0 10px rgba(255, 0, 0, 0.8);
     }
 
     72% {
-        text-shadow: 5px 5px 5px rgba(255, 127, 0, 0.8);
+        box-shadow: 0 0 10px rgba(255, 127, 0, 0.8);
     }
     86% {
-        text-shadow: 5px 5px 5px rgba(255, 255, 0, 0.8);
+        box-shadow: 0 0 10px rgba(255, 222, 31, 0.8);
     }
     100% {
-        text-shadow: 5px 5px 5px rgba(14, 188, 43, 0.8);
+        box-shadow: 0 0 10px rgba(14, 188, 43, 0.8);
     }
 }
 
@@ -123,8 +123,7 @@
     }
 }
 
-.swing {
-
+.swing :hover,.swing:focus{
     transform-origin: top center;
     animation-name: swing;
     animation-duration: 2s;
@@ -237,4 +236,21 @@
         transform: translateX(20px);
         transition: transform 1s;
     }
+}
+
+.thumb :focus,.thumb:hover{
+    -webkit-animation-name: h_thumb;
+    -webkit-animation-duration: 800ms;
+    -webkit-transform-origin:50% 50%;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+    transition: transform 520ms;
+}
+
+@-webkit-keyframes h_thumb {
+    0% { -webkit-transform: rotate(0deg); }
+    25%{-webkit-transform: rotate(-5deg); }
+    50% { -webkit-transform: rotate(0deg); }
+    75% { -webkit-transform: rotate(5deg); }
+    100% { -webkit-transform: rotate(0deg); }
 }

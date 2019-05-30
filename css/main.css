@@ -29,16 +29,19 @@ body{
     background-size: 260px!important;
 }
 .menu{
-    position: fixed;
+    position: absolute;
     width:17%;
-    height:92%;
-    top:0;
+    min-height:92%;
+    height: auto;
+    top:3%;
+
     left:0;
-    margin:2%;
+    margin: 0 2%;
     background: #8ad3e8;
     padding: 17px 0;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
     border-radius: 5px;
+
 
 }
 

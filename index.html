@@ -23,29 +23,32 @@
 <div id="content" class="content">
 
     <div id="home">
-        <br>
-
-        <img id="logo" src="images/logo.png" class="logo tada">
-        <p class="text-center slogan">Весело дітям - легко батькам!</p>
-        <br>
-        <p style=" font-size:25px;">
-            Навчальний клуб СмартМен - вiртуальна платформа курсiв, призначена для допомоги дiтям
-            у вивченнi базових знань та пiдготовки до школи.
-            Ми пропонуємо вам i вашим дiтям вчитись разом з нами.
-            Учитись весело, легко та цiкаво, i зовсім неважливо, вдома чи деiнде.
-        </p>
         <div>
-            <img src="images/main_ulli.png" class="ulli">
+            <span class="text-center slogan" style="padding:5px;">Весело дітям - легко батькам!</span>
         </div>
-        <br>
-        <p class="text-center" style="color: #563d7c;">Потрібна допомога?
-            <a id="help_button" href="#content" class="btn btn-outline-info ">Вам сюди!</a>
-        </p>
+        <div>
 
+            <img id="logo" src="images/logo.png" class="logo tada">
+
+            <br>
+            <p style=" font-size:25px;">
+                Навчальний клуб СмартМен - вiртуальна платформа курсiв, призначена для допомоги дiтям
+                у вивченнi базових знань та пiдготовки до школи.
+                Ми пропонуємо вам i вашим дiтям вчитись разом з нами.
+                Учитись весело, легко та цiкаво, i зовсім неважливо, вдома чи деiнде.
+            </p>
+            <div>
+                <img src="images/main_ulli.png" class="ulli">
+            </div>
+            <br>
+            <p class="text-center" style="color: #563d7c;">Потрібна допомога?
+                <a id="help_button" href="#content" class="btn btn-outline-info ">Вам сюди!</a>
+            </p>
+        </div>
     </div>
 
     <div id="account">
-        <div class="text-center slogan" style=" font-size: 30px;">Мій акаунт</div>
+        <div class="text-center slogan" style=" font-size: 28px;padding:10px;">Мій акаунт</div>
         <div id="account_flash" class="account_flash">
             <div id="avatar_container"><img id="avatar" src="images/avatars/catwoman.png">
 
@@ -95,7 +98,105 @@
 
     </div>
     <div id="courses">
-        <p>Мої курси</p>
+
+        <div id="courses_flash" class="course_panel">
+            <div id="title" class="text-center slogan title">Мої курси</div>
+            <div id="thread1" class="thread">
+            </div>
+            <div id="thread2" class="thread ">
+            </div>
+        </div>
+
+        <div id="current_course" class="course_panel">
+
+            <div  class="text-center slogan title">
+                <button id='courses_back_button' class='btn btn-light'> &#10140;</button>
+                <div id="course_title"></div>
+
+            </div>
+
+            <div id="course_material" class="title" style="margin-bottom: 0">
+                <div class="card-header levels" id="part_one">
+
+                    <button id="part_one_button" class="btn btn-outline-warning" data-toggle="collapse"
+                            data-target="#part_one_collapse"
+                            aria-expanded="false" aria-controls="part_one_collapse">
+                        Рівень 1: легкий
+                    </button>
+
+                    <div id="part_one_collapse" class="collapse" aria-labelledby="part_one">
+                        <div  class="card-body">
+                            <div id="course_part_one"></div>
+                           <br> <button id='open_second_part_button' class='btn btn-outline-warning open_next_part'>
+                                До наступної частини
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="card-header levels" id="part_two">
+
+                    <button id="part_two_button" class="btn btn-outline-warning" data-toggle="collapse"
+                            data-target="#part_two_collapse"
+                            aria-expanded="false" aria-controls="part_two_collapse" disabled>
+                        Рівень 2: Поглиблений
+                    </button>
+
+                    <div id="part_two_collapse" class="collapse" aria-labelledby="part_two">
+                        <div class="card-body">
+                            <div id="course_part_two"  ></div>
+                            <br>
+                            <button id='open_third_part_button' class='btn  btn-outline-warning open_next_part'> До
+                                наступної частини
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="card-header levels" id="part_three">
+
+                    <button id="part_three_button" class="btn btn-outline-danger" data-toggle="collapse"
+                            data-target="#part_three_collapse"
+                            aria-expanded="false" aria-controls="part_three_collapse" disabled>
+                        Рівень 3: Ускладнений
+                    </button>
+
+                    <div id="part_three_collapse" class="collapse" aria-labelledby="part_three">
+                        <div class="card-body">
+                           <div id="course_part_three"> </div>
+                            <br>
+                            <button id='open_test_part_button' class='btn  btn-outline-warning open_next_part'> До
+                                наступної частини
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="card-header levels" id="test_part">
+
+                    <button id="test_part_button" class="btn btn-outline-success" data-toggle="collapse"
+                            data-target="#test_part_collapse"
+                            aria-expanded="false" aria-controls="test_part_collapse" disabled>
+                        Фінальний тест
+                    </button>
+
+                    <div id="test_part_collapse" class="collapse" aria-labelledby="test_part">
+                        <div  class="card-body">
+                         <div id="course_test_part">   Пара пам пам памм</div>
+                            <button id="final_test_result" class="btn btn-info"> Отримати нагороду! </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+
     </div>
     <div id="goals">
         <p>Мої досягнення</p>
@@ -143,6 +244,7 @@
         integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
 <script src="js/main.js"></script>
+<script src="js/courses.js"></script>
 <script src="js/backend.js"></script>
 </body>
 </html>

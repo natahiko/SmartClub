@@ -2,6 +2,7 @@
     $("#content > div").hide();
     $("#entry_panel").hide();
     $("#register_panel").hide();
+    $("#headingOne").hide();
 if(sessionStorage.getItem("page")==null) sessionStorage.setItem("page","home");
 if(sessionStorage.getItem("entry")==null) sessionStorage.setItem("entry","no");
     $("#"+sessionStorage.getItem("page")).show();
@@ -102,7 +103,7 @@ function buttonsShow() {
 $("#edit_account_button").click(function () {
     $("#edit_account_button").hide();
     $("#delete_account_button").hide();
-    $("#headingOne").hide();
+    $("#headingOne").show();
     $("#save_account_button").css(
         {display:'inline-block'});
     $("#age_input").removeAttr('disabled');
@@ -117,7 +118,7 @@ $("#save_account_button").click(function () {
         {display:'inline-block'});
     $("#save_account_button").css(
         {display:'none'});
-    $("#headingOne").show();
+    $("#headingOne").hide();
 
     $("#age_input").attr('disabled', 'disabled');
     $("#login_input").attr('disabled', 'disabled');
