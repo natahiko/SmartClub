@@ -126,3 +126,17 @@ $("#courses_back_button").click(function () {
 
 fillCourses();
 fillCourseListeners();
+
+
+
+function fillGoals(){
+    for(var i=0;i<titles.length;i++){
+        $("#goals").append("<div class='course_medal_block'><p>"+titles[i]+"</p>" +
+            "<img src='./images/bronze_cover.png' class='pulse medal_block'>" +
+            "<img src='./images/silver_cover.png' class='pulse medal_block'>" +
+            "<img src='./images/golden_cover.png' class='pulse medal_block'>" +
+            "<img src='./images/diamond_cover.png' class='pulse medal_block'>" +
+            "</div>")
+    }
+}
+fillGoals();
