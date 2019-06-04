@@ -55,6 +55,10 @@
 
 }
 
+
+#course_part_one img,#course_part_two img, #course_part_three img, #course_test_part img{
+    margin:10px 15px 20px 15px;
+}
 .levels button{
 
     width: 100%;

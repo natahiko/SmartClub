@@ -13,26 +13,26 @@
         box-shadow: 0 0 10px rgba(0, 191, 255, 0.8);
     }
     14% {
-        box-shadow: 0 0 10px rgba(0, 104, 255, 0.8);
+        box-shadow: 0 0 10px rgba(28, 57, 167, 0.8);
     }
     28% {
-        box-shadow: 0 0 10px rgba(122, 0, 229, 0.8);
+        box-shadow: 0 0 10px rgba(65, 12, 130, 0.8);
     }
     43% {
-        box-shadow: 0 0 10px rgba(211, 0, 201, 0.8);
+        box-shadow: 0 0 10px rgba(214, 60, 144, 0.8);
     }
     57% {
-        box-shadow: 0 0 10px rgba(255, 0, 0, 0.8);
+        box-shadow: 0 0 10px rgba(211, 15, 4, 0.8);
     }
 
     72% {
-        box-shadow: 0 0 10px rgba(255, 127, 0, 0.8);
+        box-shadow: 0 0 10px rgba(235, 124, 14, 0.8);
     }
     86% {
-        box-shadow: 0 0 10px rgba(255, 222, 31, 0.8);
+        box-shadow: 0 0 10px rgba(255, 214, 37, 0.8);
     }
     100% {
-        box-shadow: 0 0 10px rgba(14, 188, 43, 0.8);
+        box-shadow: 0 0 10px rgba(27, 211, 24, 0.8);
     }
 }
 
@@ -98,28 +98,28 @@
 
 @keyframes swing {
     20% {
-        -webkit-transform: rotate3d(0, 0, 1, 15deg);
-        transform: rotate3d(0, 0, 1, 15deg);
-    }
+          -webkit-transform: rotate3d(0, 0, 5, 15deg);
+          transform: rotate3d(0, 0, 5, 15deg);
+      }
 
     40% {
-        -webkit-transform: rotate3d(0, 0, 1, -10deg);
-        transform: rotate3d(0, 0, 1, -10deg);
+        -webkit-transform: rotate3d(0, 0, 5, -10deg);
+        transform: rotate3d(0, 0, 5, -10deg);
     }
 
     60% {
-        -webkit-transform: rotate3d(0, 0, 1, 5deg);
-        transform: rotate3d(0, 0, 1, 5deg);
+        -webkit-transform: rotate3d(0, 0, 5, 5deg);
+        transform: rotate3d(0, 0, 5, 5deg);
     }
 
     80% {
-        -webkit-transform: rotate3d(0, 0, 1, -5deg);
-        transform: rotate3d(0, 0, 1, -5deg);
+        -webkit-transform: rotate3d(0, 0, 5, -5deg);
+        transform: rotate3d(0, 0, 5, -5deg);
     }
 
     to {
-        -webkit-transform: rotate3d(0, 0, 1, 0deg);
-        transform: rotate3d(0, 0, 1, 0deg);
+        -webkit-transform: rotate3d(0, 0, 5, 0deg);
+        transform: rotate3d(0, 0, 5, 0deg);
     }
 }
 
