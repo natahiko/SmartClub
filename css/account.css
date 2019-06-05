@@ -85,10 +85,10 @@ input:focus,textarea:focus ,select:focus{
     font-size: 16px;!important;
     padding: 4px 18px!important;
 }
-#edit_account_button,#delete_account_button{
+#edit_account_button{
     margin-top: 30px;
 }
-#save_account_button{
+#save_account_button, #delete_account_button{
     display: none;
 }
 #edit_account_button:hover{

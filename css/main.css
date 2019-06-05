@@ -206,3 +206,7 @@ body{
     width:13%;
     margin:0 5%;
 }
+.name_hint{
+    font-size: 12px;
+    color: rgba(102,103,103,0.4);
+}

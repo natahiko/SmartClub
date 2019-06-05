@@ -58,15 +58,15 @@
             </div>
             <div id="account_fields">
 
-                <p id="name">Наталія Шкаровська</p>
+                <p id="name"></p>
                 <br>
                 <a id="second_goals_button" href="#content" class="btn btn-outline-success ">Досягнення</a>
                 <a id="second_course_button" href="#content" class="btn btn-outline-secondary ">Курси</a>
                 <br> <br>
                 <div class="account_info">
-                    <p>Вік:</p><input id="age_input" type="number" value="7" disabled>
-                    <p>Логін:</p><input id="login_input" type="text" value="flower777" disabled>
-                    <p>Пошта:</p><input id="email_input" type="text" value="nshkarovska@gmail.com" disabled>
+                    <p>Логін:</p><input id="login_input" type="text" disabled>
+                    <p>Вік:</p><input id="age_input" type="number" disabled>
+                    <p>Пошта:</p><input id="email_input" type="text" disabled>
 
 
                 </div>
@@ -77,18 +77,19 @@
 
                     <button id="change_password_spoiler" class="btn btn-outline-info" data-toggle="collapse"
                             data-target="#collapseOne"
-                            aria-expanded="false" aria-controls="collapseOne">
+                            aria-expanded="true" aria-controls="collapseOne">
                         змінити пароль
                     </button>
 
                     <div id="collapseOne" class="collapse" aria-labelledby="headingOne">
                         <div class="card-body">
                             <p>введіть старий пароль:</p>
-                            <input type="password" class="form-control">
+                            <input id="oldpassword_change_account" type="password" class="form-control">
                             <p>введіть новий пароль:</p>
-                            <input type="password" class="form-control">
+                            <input id="newpassword_change_account" type="password" class="form-control">
                             <p>повторіть новий пароль:</p>
-                            <input type="password" class="form-control">
+                            <input id="newpassword_change_account2" type="password" class="form-control">
+                            <button style="margin-top: 10px; margin-bottom: -20px" id="change_password_button" class="btn btn-outline-success">Змінити</button>
                         </div>
                     </div>
 
@@ -231,7 +232,8 @@
 
 
         <span>Електронна пошта:</span><br><input id="register_email" type="email" class="form-control">
-        <span>Ім'я користувача:</span><br><input id="register_name" type="text" maxlength="255" class="form-control">
+        <span>Ім'я користувача:</span><br><span class="name_hint">Ім'я користувача не може містити символів чи чисел (окрім пробілу)</span><br>
+        <input data-placement="left"id="register_name" type="text" maxlength="255" class="form-control">
         <span>Логін:</span><br><input id="register_login" type="text" maxlength="20" class="form-control">
         <span>Вік:</span><br><input id="register_age" type="number" min="1" max="99" class="form-control">
         <span>Пароль:</span><br><input id="register-password" type="password" maxlength="40" class="form-control">
@@ -243,9 +245,7 @@
 </div>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
         integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
         crossorigin="anonymous"></script>

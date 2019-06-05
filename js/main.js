@@ -15,6 +15,7 @@ $("#home_button").click(function () {
     $("#home").show();
     sessionStorage.setItem("page", "home");
     sessionStorage.setItem("entry","yes" );
+    closeEditAccount();
 });
 
 $("#courses_button").click(function () {
@@ -22,36 +23,27 @@ $("#courses_button").click(function () {
     $("#courses").show();
     sessionStorage.setItem("page", "courses");
     sessionStorage.setItem("entry","yes" );
+    closeEditAccount();
 });
 $("#second_course_button").click(function () {
-    $("#content > div").hide();
-    $("#courses").show();
-    sessionStorage.setItem("page", "courses");
-    sessionStorage.setItem("entry","yes" );
-});
-$("#account_button").click(function () {
-    $("#content > div").hide();
-    $("#account").show();
-    sessionStorage.setItem("page", "account");
-    sessionStorage.setItem("entry","yes" );
+    $("#courses_button").click();
 });
 $("#goals_button").click(function () {
     $("#content > div").hide();
     $("#goals").show();
     sessionStorage.setItem("page", "goals");
     sessionStorage.setItem("entry","yes" );
+    closeEditAccount();
 });
 $("#second_goals_button").click(function () {
-    $("#content > div").hide();
-    $("#goals").show();
-    sessionStorage.setItem("page", "goals");
-    sessionStorage.setItem("entry","yes" );
+    $("#goals_button").click();
 });
 $("#help_button").click(function () {
     $("#content > div").hide();
     $("#help").show();
     sessionStorage.setItem("page", "help");
     sessionStorage.setItem("entry","yes" );
+    closeEditAccount();
 });
 
 $("#exit_button").click(function () {
@@ -60,6 +52,8 @@ $("#exit_button").click(function () {
     buttonsHide();
     sessionStorage.setItem("page", "home");
     sessionStorage.setItem("entry","no" );
+    sessionStorage.setItem("login",null );
+    closeEditAccount();
 
 });
 
@@ -102,7 +96,8 @@ function buttonsShow() {
 /*edit profile button*/
 $("#edit_account_button").click(function () {
     $("#edit_account_button").hide();
-    $("#delete_account_button").hide();
+    $("#delete_account_button").css(
+        {display:'inline-block'});
     $("#headingOne").show();
     $("#save_account_button").css(
         {display:'inline-block'});
@@ -111,28 +106,3 @@ $("#edit_account_button").click(function () {
     $("#email_input").removeAttr('disabled');
 });
 
-$("#save_account_button").click(function () {
-    $("#edit_account_button").css(
-        {display:'inline-block'});
-    $("#delete_account_button").css(
-        {display:'inline-block'});
-    $("#save_account_button").css(
-        {display:'none'});
-    $("#headingOne").hide();
-
-    $("#age_input").attr('disabled', 'disabled');
-    $("#login_input").attr('disabled', 'disabled');
-    $("#email_input").attr('disabled', 'disabled');
-
-    alert("add values from input to database");
-});
-
-
-
-/*TODO for @natahiko delete account button*/
-
-
-$("#delete_account_button").click(function () {
-    alert("TODO delete");
-
-});
