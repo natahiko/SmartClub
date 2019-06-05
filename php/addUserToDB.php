@@ -19,8 +19,11 @@ if (!$conn) {
 //encrypt password
 $password = sha1($password);
 
-$sql = "INSERT INTO Smartman.users (login, password, name, age, email) 
+$sql = "INSERT INTO Smartman.users (login, password, name, age, email)
 VALUES ('$login', '$password', '$name','$age', '$email');";
+
+$sql2 = "INSERT INTO Smartman.userGoals (login)
+VALUES ('$login');";
 
 if (mysqli_query($conn, $sql)) {
     echo "New record created successfully";

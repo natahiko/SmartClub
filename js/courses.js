@@ -3,36 +3,46 @@ var titles = [];
 var images = [];
 function loadAllCourses() {
     $.get("./php/getAllCoursesNames.php",function (data) {
-        var arr = data.split(" ");
-        for(var i=0, k=0; i<arr.length; i+=2,k++){
-            titles[k] = arr[i];
-            images[k] = "./images/"+arr[i+1]+".jpg";
+        var arr = data.split(";");
+        for(var i=0; i<arr.length; i++){
+            if(arr[i]=="") continue;
+            var ar = arr[i].split(" ");
+            titles[i] = "";
+            for(var j=1; j<ar.length; j++) titles[i] += (ar[j]+" ");
+            images[i] = ar[0];
         }
+        fillCourses();
     });
 }
-/*
-var titles=["Уроки етикету","Весела математика","Знайомимося з англійською",
-    "Правила дорожнього руху","Цікавинки для допитливих"];
-var images=["./images/ethics.jpg","./images/maths.jpg","./images/eng.jpg",'./images/car.jpg',"./images/interesting.jpg"];*/
-var id=['c1','c2','c3','c4','c5'];
 var course_buttons=[];
 var second_open=false, third_open=false, test_open=false;
 
 function fillCourses(){
     for(let i=0;i<titles.length;i++) {
-        course_buttons.push("<button class='courses_box btn thumb' id='"+id[i]+"'><img src='" + images[i] + "'><p>" + titles[i] + "</p></button>");
+        course_buttons.push("<button class='courses_box btn thumb' onclick='openCourse("+i+")'>" +
+            "<img src='./images/" + images[i] + ".jpg'><p>" + titles[i] + "</p></button>");
     }
     for(let i=0;i<titles.length;i++){
         if(i%2==0) $("#thread1").append(course_buttons[i]);
         if(i%2==1) $("#thread2").append(course_buttons[i]);
     }
 }
+function openCourse(i) {
+    $("#courses_flash").hide();
+    $("#current_course").show();
+    $("#course_title").append("<span>"+titles[i]+"<img src='"+images[i]+"' style='width:40%;'></span>");
+    var login = sessionStorage.getItem("login");
+    var course = images[i];
+    $.get("./php/getUserLevelInCourse.php",{login: login, course: course},function (data) {
+        alert(data+" - "+course+" - "+login);
+    });
+};
 function fillCourseListeners() {
     for(let i=0;i<titles.length;i++) {
         $("#"+id[i]).click(function () {
             $("#courses_flash").hide();
             $("#current_course").show();
-            $("#course_title").append("<span>"+titles[i]+"<img src='"+images[i]+"' style='width:40%;'></span>");
+            $("#course_title").append("<span>"+titles[i]+"<img src='./images/"+images[i]+".jpg' style='width:40%;'></span>");
             fillPartOne(ethics_part_one);
 
             if(second_open){
@@ -102,11 +112,6 @@ function returnToAllCourses() {
 $("#courses_back_button").click(function () {
     returnToAllCourses();
 });
-
-fillCourses();
-fillCourseListeners();
-
-
 
 function fillGoals(){
     for(var i=0;i<titles.length;i++){
