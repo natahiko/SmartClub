@@ -15,14 +15,14 @@ if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
-$sql = "SELECT * FROM Smartman.users WHERE login= '$login' AND password= '$password' ";
+$sql = "SELECT * FROM Smartclub.allusers WHERE login= '$login' AND password= '$password' ";
 $result = $conn->query($sql);
 
 if ($result->num_rows> 0) {
     echo $result->num_rows ;
 } else{
     echo "false";
-} 
+}
 
 mysqli_close($conn);
 

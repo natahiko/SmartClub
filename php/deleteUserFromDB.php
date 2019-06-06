@@ -10,7 +10,7 @@ if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
-$sql = "DELETE FROM Smartman.users WHERE login='$login'";
+$sql = "DELETE FROM Smartclub.allusers WHERE login='$login'";
 $result = $conn->query($sql);
 
 echo "ok";

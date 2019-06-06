@@ -12,7 +12,7 @@ if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
-$sql = "SELECT $course FROM Smartman.userGoals WHERE login= '$login'";
+$sql = "SELECT $course FROM Smartclub.usersGoals WHERE login= '$login'";
 $result = $conn->query($sql);
 $row = mysqli_fetch_array($result);
 $level = $row[$course];

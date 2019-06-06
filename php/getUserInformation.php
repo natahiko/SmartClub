@@ -23,7 +23,7 @@ if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
-$sql = "SELECT name, age, email FROM Smartman.users WHERE login= '$login'";
+$sql = "SELECT name, age, email FROM Smartclub.allusers WHERE login= '$login'";
 $result = $conn->query($sql);
 $row = mysqli_fetch_array($result);
 

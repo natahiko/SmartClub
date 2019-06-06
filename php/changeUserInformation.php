@@ -13,16 +13,16 @@ $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD);
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
-$sql = "SELECT id FROM Smartman.users WHERE login= '$oldlogin'";
+$sql = "SELECT id FROM Smartclub.allusers WHERE login= '$oldlogin'";
 $result = $conn->query($sql);
 $row = mysqli_fetch_array($result);
 $id = $row["id"];
 
-$sql = "UPDATE Smartman.users SET login='$login' WHERE id='$id'";
+$sql = "UPDATE Smartclub.allusers SET login='$login' WHERE id='$id'";
 $result = $conn->query($sql);
-$sql1 = "UPDATE Smartman.users SET age='$age' WHERE id='$id'";
+$sql1 = "UPDATE Smartclub.allusers SET age='$age' WHERE id='$id'";
 $result1 = $conn->query($sql1);
-$sql2 = "UPDATE Smartman.users SET email='$email' WHERE id='$id'";
+$sql2 = "UPDATE Smartclub.allusers SET email='$email' WHERE id='$id'";
 $result2 = $conn->query($sql2);
 
 echo $id;

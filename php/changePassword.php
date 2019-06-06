@@ -14,7 +14,7 @@ if (!$conn) {
 }
 
 
-$sql = "UPDATE Smartman.users SET password='$password' WHERE login='$login'";
+$sql = "UPDATE Smartclub.allusers SET password='$password' WHERE login='$login'";
 $result = $conn->query($sql);
 
 echo "ok";

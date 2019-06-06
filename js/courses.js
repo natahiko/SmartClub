@@ -1,6 +1,8 @@
 loadAllCourses();
 var titles = [];
 var images = [];
+var course_buttons=[];
+
 function loadAllCourses() {
     $.get("./php/getAllCoursesNames.php",function (data) {
         var arr = data.split(";");
@@ -11,11 +13,11 @@ function loadAllCourses() {
             for(var j=1; j<ar.length; j++) titles[i] += (ar[j]+" ");
             images[i] = ar[0];
         }
+
+        fillGoals();
         fillCourses();
     });
 }
-var course_buttons=[];
-var second_open=false, third_open=false, test_open=false;
 
 function fillCourses(){
     for(let i=0;i<titles.length;i++) {
@@ -28,40 +30,46 @@ function fillCourses(){
     }
 }
 function openCourse(i) {
+    sessionStorage.setItem("course",i);
     $("#courses_flash").hide();
     $("#current_course").show();
-    $("#course_title").append("<span>"+titles[i]+"<img src='"+images[i]+"' style='width:40%;'></span>");
+    $("#course_title").append("<span>"+titles[i]+"<img src='./images/"+images[i]+".jpg' style='width:40%;'></span>");
     var login = sessionStorage.getItem("login");
     var course = images[i];
-    $.get("./php/getUserLevelInCourse.php",{login: login, course: course},function (data) {
-        alert(data+" - "+course+" - "+login);
+    $.get("./php/getUserLevelInCourse.php",{login: login, course: course},function (level) {
+        $.get("./php/getCourseRulesAndImages.php",{level: level, course: course},function (data) {
+            var result = data.split("#");
+            if(level==1){
+                for(var i=result.length-1;i>=0;i-=2)
+                    $("#course_part_one").prepend("<p>" + result[i-1] + "</p><img src='"+result[i]+"'>");
+            }else if(level==2){
+                $("#part_two_button").removeAttr('disabled');
+                for(var i=result.length-1;i>=20;i-=2)
+                    $("#course_part_two").prepend("<p>" + result[i-1] + "</p><img src='"+result[i]+"'>");
+                for(var i=result.length-1-20;i>=0;i-=2)
+                    $("#course_part_two").prepend("<p>" + result[i-1] + "</p><img src='"+result[i]+"'>");
+            } else if(level==3){
+                $("#part_three_button").removeAttr('disabled');
+                $("#part_two_button").removeAttr('disabled');
+                for(var i=result.length-1;i>=40;i-=2)
+                    $("#course_part_two").prepend("<p>" + result[i-1] + "</p><img src='"+result[i]+"'>");
+                for(var i=result.length-1-20;i>=20;i-=2)
+                    $("#course_part_two").prepend("<p>" + result[i-1] + "</p><img src='"+result[i]+"'>");
+                for(var i=result.length-1-40;i>=0;i-=2)
+                    $("#course_part_two").prepend("<p>" + result[i-1] + "</p><img src='"+result[i]+"'>");
+            } else alert("test here!");
+        });
     });
 };
-function fillCourseListeners() {
-    for(let i=0;i<titles.length;i++) {
-        $("#"+id[i]).click(function () {
-            $("#courses_flash").hide();
-            $("#current_course").show();
-            $("#course_title").append("<span>"+titles[i]+"<img src='./images/"+images[i]+".jpg' style='width:40%;'></span>");
-            fillPartOne(ethics_part_one);
-
-            if(second_open){
-                fillPartTwo(ethics_part_two);
-                $("#part_two_button").removeAttr('disabled');
-            }
-            if(third_open){
-                fillPartThree(ethics_part_three);
-                $("#part_three_button").removeAttr('disabled');}
-            if(test_open){ $("#test_part_button").removeAttr('disabled');}
-
-        });
-    }
-}
 
 $("#open_second_part_button").click(function () {
-    second_open=true;
-    fillPartTwo(ethics_part_two);
-    $("#part_two_button").removeAttr('disabled');
+    var login = sessionStorage.getItem("login");
+    var course = sessionStorage.getItem("course");
+    $("#part_one_button").click();
+    if(course=="no") alert("course==no in courses.js 68line");
+    $.get("./php/setUserLevelInCourse.php",{login: login, level: 2},function (data) {
+        openCourse(course);
+    });
 });
 
 $("#open_third_part_button").click(function () {
@@ -76,30 +84,11 @@ $("#open_test_part_button").click(function () {
     $("#test_part_button").removeAttr('disabled');
 });
 
-function fillPartOne(array){
-
-    for(var i=array.length-1;i>=0;i--)
-        $("#course_part_one").prepend("<p>" + array[i] + "</p><img src='./images/tulen.jpg'>");
-
-
-}
-
-function fillPartTwo(array){
-
-    for(var i=array.length-1;i>=0;i--)
-        $("#course_part_two").prepend("<p>" + array[i] + "</p><img src='./images/tulen2.jpg'>");
-
-
-}
-
-function fillPartThree(array){
-
-    for(var i=array.length-1;i>=0;i--)
-        $("#course_part_three").prepend("<p>" + array[i] + "</p><img src='./images/soslik.jpg'>");
-
-
-}
 function returnToAllCourses() {
+    sessionStorage.setItem("course","no");
+    $("#part_three_button").setAttribute('disabled');
+    $("#part_two_button").setAttribute('disabled');
+    $("#test_part_button").setAttribute('disabled');
     $("#current_course").hide();
     $("#course_title").empty();
     $("#course_part_one").empty();
@@ -107,12 +96,9 @@ function returnToAllCourses() {
     $("#course_part_three").empty();
     $("#courses_flash").show();
 }
-
-
 $("#courses_back_button").click(function () {
     returnToAllCourses();
 });
-
 function fillGoals(){
     for(var i=0;i<titles.length;i++){
         $("#goals").append("<div class='course_medal_block'><p>"+titles[i]+"</p>" +
@@ -123,4 +109,3 @@ function fillGoals(){
             "</div>")
     }
 }
-fillGoals();

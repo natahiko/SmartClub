@@ -11,6 +11,7 @@
         $("#login_input").val(sessionStorage.getItem("login"));
         $("#email_input").val(ar[ar.length-1]);
     });
+    sessionStorage.setItem("course","no");
 }
 setUserInformationInAccount();
 
