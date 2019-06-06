@@ -108,6 +108,17 @@ $("#open_test_part_button").click(function () {
     });
 });
 
+$("#final_test_result").click(function () {
+    var login = sessionStorage.getItem("login");
+    var course = sessionStorage.getItem("course");
+    $("#test_part_button").click();
+    if(course=="no") alert("course==no in courses.js 68line");
+    $.get("./php/setUserLevelInCourse.php",{login: login, level: 5, course: images[course]},function (data) {
+        openCourse(course);
+        if(data=="changed") fillGoals();
+    });
+});
+
 function returnToAllCourses() {
     sessionStorage.setItem("course","no");
     $("#part_three_button").attr('disabled', 'disabled');
