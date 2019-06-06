@@ -33,6 +33,7 @@ function openCourse(i) {
     sessionStorage.setItem("course",i);
     $("#courses_flash").hide();
     $("#current_course").show();
+    $("#course_title").empty();
     $("#course_title").append("<span>"+titles[i]+"<img src='./images/"+images[i]+".jpg' style='width:40%;'></span>");
     var login = sessionStorage.getItem("login");
     var course = images[i];
@@ -57,7 +58,18 @@ function openCourse(i) {
                     $("#course_part_two").prepend("<p>" + result[i-1] + "</p><img src='"+result[i]+"'>");
                 for(var i=result.length-1-40;i>=0;i-=2)
                     $("#course_part_two").prepend("<p>" + result[i-1] + "</p><img src='"+result[i]+"'>");
-            } else alert("test here!");
+            } else {
+                $("#part_three_button").removeAttr('disabled');
+                $("#part_two_button").removeAttr('disabled');
+                $("#test_part_button").removeAttr('disabled');
+                for(var i=result.length-1;i>=40;i-=2)
+                    $("#course_part_two").prepend("<p>" + result[i-1] + "</p><img src='"+result[i]+"'>");
+                for(var i=result.length-1-20;i>=20;i-=2)
+                    $("#course_part_two").prepend("<p>" + result[i-1] + "</p><img src='"+result[i]+"'>");
+                for(var i=result.length-1-40;i>=0;i-=2)
+                    $("#course_part_two").prepend("<p>" + result[i-1] + "</p><img src='"+result[i]+"'>");
+                alert("test here!");
+            }
         });
     });
 };
@@ -67,28 +79,40 @@ $("#open_second_part_button").click(function () {
     var course = sessionStorage.getItem("course");
     $("#part_one_button").click();
     if(course=="no") alert("course==no in courses.js 68line");
-    $.get("./php/setUserLevelInCourse.php",{login: login, level: 2},function (data) {
+    $.get("./php/setUserLevelInCourse.php",{login: login, level: 2, course: images[course]},function (data) {
         openCourse(course);
+        if(data=="changed") fillGoals();
     });
+
 });
 
 $("#open_third_part_button").click(function () {
-    third_open=true;
-    fillPartThree(ethics_part_three);
-    $("#part_three_button").removeAttr('disabled');
+    var login = sessionStorage.getItem("login");
+    var course = sessionStorage.getItem("course");
+    $("#part_two_button").click();
+    if(course=="no") alert("course==no in courses.js 68line");
+    $.get("./php/setUserLevelInCourse.php",{login: login, level: 3, course: images[course]},function (data) {
+        openCourse(course);
+        if(data=="changed") fillGoals();
+    });
 });
 
 $("#open_test_part_button").click(function () {
-    test_open=true;
-   /* fillTestPart(ethics_part_two);*/
-    $("#test_part_button").removeAttr('disabled');
+    var login = sessionStorage.getItem("login");
+    var course = sessionStorage.getItem("course");
+    $("#part_three_button").click();
+    if(course=="no") alert("course==no in courses.js 68line");
+    $.get("./php/setUserLevelInCourse.php",{login: login, level: 4, course: images[course]},function (data) {
+        openCourse(course);
+        if(data=="changed") fillGoals();
+    });
 });
 
 function returnToAllCourses() {
     sessionStorage.setItem("course","no");
-    $("#part_three_button").setAttribute('disabled');
-    $("#part_two_button").setAttribute('disabled');
-    $("#test_part_button").setAttribute('disabled');
+    $("#part_three_button").attr('disabled', 'disabled');
+    $("#part_two_button").attr('disabled', 'disabled');
+    $("#test_part_button").attr('disabled', 'disabled');
     $("#current_course").hide();
     $("#course_title").empty();
     $("#course_part_one").empty();
@@ -100,12 +124,25 @@ $("#courses_back_button").click(function () {
     returnToAllCourses();
 });
 function fillGoals(){
-    for(var i=0;i<titles.length;i++){
-        $("#goals").append("<div class='course_medal_block'><p>"+titles[i]+"</p>" +
-            "<img src='./images/bronze_cover.png' class='pulse medal_block'>" +
-            "<img src='./images/silver_cover.png' class='pulse medal_block'>" +
-            "<img src='./images/golden_cover.png' class='pulse medal_block'>" +
-            "<img src='./images/diamond_cover.png' class='pulse medal_block'>" +
-            "</div>")
-    }
+    var login = sessionStorage.getItem("login");
+    $.get("./php/getUserLevels.php",{login: login},function (alllevel) {
+        var res = "";
+        var levels = alllevel.split(";");
+        for (var i = 0; i < titles.length; i++) {
+            var level = levels[i];
+            res += "<div class='course_medal_block'><p>" + titles[i] + "</p>";
+            if(level>1) res += "<img src='./images/bronze.png' class='pulse medal_block'>";
+            else res += "<img src='./images/bronze_cover.png' class='medal_block'>";
+            if(level>2) res += "<img src='./images/silver.png' class='pulse medal_block'>";
+            else res += "<img src='./images/silver_cover.png' class='medal_block'>";
+            if(level>3) res += "<img src='./images/golden.png' class='pulse medal_block'>";
+            else res += "<img src='./images/golden_cover.png' class='medal_block'>";
+            if(level>4) res += "<img src='./images/diamond.png' class='pulse medal_block'>";
+            else res += "<img src='./images/diamond_cover.png' class='medal_block'>";
+            res += "</div>";
+        }
+        $("#goals").empty();
+        $("#goals").append("<div class='title slogan text-center'><img src='images/medal.gif\' style='width:8%;'> Мої досягнення <img src='images/medal.gif' style='width:8%;'></div>\n");
+        $("#goals").append(res);
+    });
 }

@@ -24,7 +24,7 @@ if($level>1){
   $sql2 = "SELECT rule1, img1, rule2, img2, rule3, img3, rule4, img4, rule5, img5, rule6, img6, rule7, img7, rule8, img8, rule9, img9, rule10, img10 FROM Smartclub.courses WHERE name = '$course' AND level = 2 ";
   $result2 = $conn->query($sql2);
   $row2 = mysqli_fetch_array($result2);
-  echo $row2['rule1'].'#'.$row2['img1'].'#'.$row2['rule2'].'#'.$row2['img2'].'#'.$row2['rule3'].'#'.$row2['img3'].'#'.$row2['rule4'].'#'.$row2['img4'].'#';
+  echo '#'.$row2['rule1'].'#'.$row2['img1'].'#'.$row2['rule2'].'#'.$row2['img2'].'#'.$row2['rule3'].'#'.$row2['img3'].'#'.$row2['rule4'].'#'.$row2['img4'].'#';
   echo $row2['rule5'].'#'.$row2['img5'].'#'.$row2['rule6'].'#'.$row2['img6'].'#'.$row2['rule7'].'#'.$row2['img7'].'#'.$row2['rule8'].'#'.$row2['img8'].'#';
   echo $row2['rule9'].'#'.$row2['img9'].'#'.$row2['rule10'].'#'.$row2['img10'];
 }
@@ -33,7 +33,7 @@ if($level>2){
   $sql3 = "SELECT rule1, img1, rule2, img2, rule3, img3, rule4, img4, rule5, img5, rule6, img6, rule7, img7, rule8, img8, rule9, img9, rule10, img10 FROM Smartclub.courses WHERE name = '$course' AND level = 3 ";
   $result3 = $conn->query($sql3);
   $row3 = mysqli_fetch_array($result3);
-  echo $row3['rule1'].'#'.$row3['img1'].'#'.$row3['rule2'].'#'.$row3['img2'].'#'.$row3['rule3'].'#'.$row3['img3'].'#'.$row3['rule4'].'#'.$row3['img4'].'#';
+  echo '#'.$row3['rule1'].'#'.$row3['img1'].'#'.$row3['rule2'].'#'.$row3['img2'].'#'.$row3['rule3'].'#'.$row3['img3'].'#'.$row3['rule4'].'#'.$row3['img4'].'#';
   echo $row3['rule5'].'#'.$row3['img5'].'#'.$row3['rule6'].'#'.$row3['img6'].'#'.$row3['rule7'].'#'.$row3['img7'].'#'.$row3['rule8'].'#'.$row3['img8'].'#';
   echo $row3['rule9'].'#'.$row3['img9'].'#'.$row3['rule10'].'#'.$row3['img10'];
 }

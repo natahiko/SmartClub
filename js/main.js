@@ -24,6 +24,7 @@ $("#courses_button").click(function () {
     sessionStorage.setItem("page", "courses");
     sessionStorage.setItem("entry","yes" );
     closeEditAccount();
+    returnToAllCourses();
 });
 $("#second_course_button").click(function () {
     $("#courses_button").click();

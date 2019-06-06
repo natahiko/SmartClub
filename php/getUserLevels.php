@@ -1,7 +1,5 @@
 <?php
 $login = $_REQUEST["login"];
-$course = $_REQUEST["course"];
-$level = $_REQUEST["level"];
 
 define("DB_HOST", "localhost");
 define("DB_USER", "root");
@@ -13,16 +11,11 @@ if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
-$sql = "SELECT $course FROM Smartclub.usersGoals WHERE login= '$login'";
+
+$sql = "SELECT * FROM Smartclub.usersGoals WHERE login= '$login'";
 $result = $conn->query($sql);
 $row = mysqli_fetch_array($result);
-$oldlevel = $row[$course];
 
-if ($oldlevel<$level) {
-  echo "changed";
-  $sql = "UPDATE Smartclub.usersGoals SET $course = '$level' WHERE login= '$login'";
-  $result = $conn->query($sql);
-} else echo "ok";
-
+echo $row["ethics"];
 mysqli_close($conn);
 ?>
