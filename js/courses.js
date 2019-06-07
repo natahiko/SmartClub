@@ -129,6 +129,7 @@ $("#courses_back_button").click(function () {
 function fillGoals(){
     var login = sessionStorage.getItem("login");
     $.get("./php/getUserLevels.php",{login: login},function (alllevel) {
+        alert(alllevel);
         var res = "";
         var levels = alllevel.split(";");
         for (var i = 0; i < titles.length; i++) {

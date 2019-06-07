@@ -77,7 +77,7 @@ $("#account_button").click(function () {
 });
 
 function consistcharacters(name){
-    if ( !/^[a-zA-Zа-яА-ЯІі]+$/.test(name) ) return true;
+    if ( !/^[a-zA-Zа-яА-ЯІі ]+$/.test(name) ) return true;
     return false;
 }
 
@@ -148,10 +148,10 @@ $("#register_age").keyup(function () {
 });
 $("#register_name").keyup(function () {
     var name = $("#register_name").val();
-    if (name=="")
-        $("#register_age").css("background","#FFFFFF");
+    if (name=="" || consistcharacters(name))
+        $("#register_name").css("background","#FFFFFF");
     else
-        $("#register_age").css("background","#BFFFC7");
+        $("#register_name").css("background","#BFFFC7");
 });
 
 

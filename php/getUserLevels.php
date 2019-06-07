@@ -14,8 +14,10 @@ if (!$conn) {
 
 $sql = "SELECT * FROM Smartclub.usersGoals WHERE login= '$login'";
 $result = $conn->query($sql);
-$row = mysqli_fetch_array($result);
+//$row = mysqli_fetch_array($result);
+$row = $result->fetch_assoc();
+//for($i=2; $i<)
+echo $row["ethics"].';'.$row["inventions"];
 
-echo $row["ethics"];
 mysqli_close($conn);
 ?>

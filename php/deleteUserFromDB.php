@@ -12,6 +12,8 @@ if (!$conn) {
 
 $sql = "DELETE FROM Smartclub.allusers WHERE login='$login'";
 $result = $conn->query($sql);
+$sql2 = "DELETE FROM Smartclub.usersGoals WHERE login='$login'";
+$result2 = $conn->query($sql2);
 
 echo "ok";
 mysqli_close($conn);
