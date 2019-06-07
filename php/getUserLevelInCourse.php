@@ -14,9 +14,11 @@ if (!$conn) {
 
 $sql = "SELECT $course FROM Smartclub.usersGoals WHERE login= '$login'";
 $result = $conn->query($sql);
-$row = mysqli_fetch_array($result);
-$level = $row[$course];
+if ($result->num_rows > 0) {
+while($row = $result->fetch_assoc()) {
+        echo $row[$course];
+    }
+  } else echo "jfnvhjfnvhf";
 
-echo $level;
 mysqli_close($conn);
 ?>

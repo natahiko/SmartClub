@@ -107,3 +107,9 @@
 .open_next_part{
     width: 90%!important;
 }
+.course_title{
+    font-weight: bolder;
+    font-style: oblique;
+    font-size: xx-large;
+    text-shadow: 2px 2px 5px #a4c9ff;
+}

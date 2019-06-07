@@ -13,7 +13,6 @@ function loadAllCourses() {
             for(var j=1; j<ar.length; j++) titles[i] += (ar[j]+" ");
             images[i] = ar[0];
         }
-
         fillGoals();
         fillCourses();
     });
@@ -22,7 +21,7 @@ function loadAllCourses() {
 function fillCourses(){
     for(let i=0;i<titles.length;i++) {
         course_buttons.push("<button class='courses_box btn thumb' onclick='openCourse("+i+")'>" +
-            "<img src='./images/" + images[i] + ".jpg'><p>" + titles[i] + "</p></button>");
+            "<img style='height: 200px' src='./images/" + images[i] + ".jpg'><p>" + titles[i] + "</p></button>");
     }
     for(let i=0;i<titles.length;i++){
         if(i%2==0) $("#thread1").append(course_buttons[i]);
@@ -34,7 +33,7 @@ function openCourse(i) {
     $("#courses_flash").hide();
     $("#current_course").show();
     $("#course_title").empty();
-    $("#course_title").append("<span>"+titles[i]+"<img src='./images/"+images[i]+".jpg' style='width:40%;'></span>");
+    $("#course_title").append("<span class='course_title'>"+titles[i]+"<img src='./images/"+images[i]+".jpg' style='height: 100px'></span>");
     var login = sessionStorage.getItem("login");
     var course = images[i];
     $.get("./php/getUserLevelInCourse.php",{login: login, course: course},function (level) {
@@ -42,32 +41,25 @@ function openCourse(i) {
             var result = data.split("#");
             if(level==1){
                 for(var i=result.length-1;i>=0;i-=2)
-                    $("#course_part_one").prepend("<p>" + result[i-1] + "</p><img src='"+result[i]+"'>");
+                    $("#course_part_one").prepend("<p>" + result[i-1] + "</p><img style='width: 100%' src='"+result[i]+"'>");
             }else if(level==2){
                 $("#part_two_button").removeAttr('disabled');
                 for(var i=result.length-1;i>=20;i-=2)
-                    $("#course_part_two").prepend("<p>" + result[i-1] + "</p><img src='"+result[i]+"'>");
+                    $("#course_part_two").prepend("<img style='width: 100%' src='"+result[i]+"'><p>" + result[i-1] + "</p>");
                 for(var i=result.length-1-20;i>=0;i-=2)
-                    $("#course_part_two").prepend("<p>" + result[i-1] + "</p><img src='"+result[i]+"'>");
-            } else if(level==3){
-                $("#part_three_button").removeAttr('disabled');
-                $("#part_two_button").removeAttr('disabled');
-                for(var i=result.length-1;i>=40;i-=2)
-                    $("#course_part_two").prepend("<p>" + result[i-1] + "</p><img src='"+result[i]+"'>");
-                for(var i=result.length-1-20;i>=20;i-=2)
-                    $("#course_part_two").prepend("<p>" + result[i-1] + "</p><img src='"+result[i]+"'>");
-                for(var i=result.length-1-40;i>=0;i-=2)
-                    $("#course_part_two").prepend("<p>" + result[i-1] + "</p><img src='"+result[i]+"'>");
+                    $("#course_part_one").prepend("<img style='width: 100%' src='"+result[i]+"'><p>" + result[i-1] + "</p>");
             } else {
                 $("#part_three_button").removeAttr('disabled');
                 $("#part_two_button").removeAttr('disabled');
-                $("#test_part_button").removeAttr('disabled');
                 for(var i=result.length-1;i>=40;i-=2)
-                    $("#course_part_two").prepend("<p>" + result[i-1] + "</p><img src='"+result[i]+"'>");
+                    $("#course_part_three").prepend("<img style='width: 100%' src='"+result[i]+"'><p>" + result[i-1] + "</p>");
                 for(var i=result.length-1-20;i>=20;i-=2)
-                    $("#course_part_two").prepend("<p>" + result[i-1] + "</p><img src='"+result[i]+"'>");
+                    $("#course_part_two").prepend("<img style='width: 100%' src='"+result[i]+"'><p>" + result[i-1] + "</p>");
                 for(var i=result.length-1-40;i>=0;i-=2)
-                    $("#course_part_two").prepend("<p>" + result[i-1] + "</p><img src='"+result[i]+"'>");
+                    $("#course_part_one").prepend("<img style='width: 100%' src='"+result[i]+"'><p>" + result[i-1] + "</p>");
+            }
+            if(level>3){
+                $("#test_part_button").removeAttr('disabled');
                 alert("test here!");
             }
         });
