@@ -2,9 +2,9 @@
     $.get("./php/getUserInformation.php",{login: sessionStorage.getItem("login")}, function (data) {
         var ar = data.split(" ");
         var name = "";
-        for(var i=0; i<ar.length-2; i++) {
+        for(var i=0; i<ar.length-3; i++) {
             name += ar[i];
-            if(i!=ar.length-3) name += " ";
+            if(i!=ar.length-4) name += " ";
         }
         $("#name").html(name);
         $("#age_input").val(ar[ar.length-3]);

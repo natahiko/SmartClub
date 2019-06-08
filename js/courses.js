@@ -39,6 +39,9 @@ function openCourse(i) {
     $.get("./php/getUserLevelInCourse.php",{login: login, course: course},function (level) {
         $.get("./php/getCourseRulesAndImages.php",{level: level, course: course},function (data) {
             var result = data.split("#");
+            $("#course_part_one").empty();
+            $("#course_part_two").empty();
+            $("#course_part_three").empty();
             if(level==1){
                 for(var i=result.length-1;i>=0;i-=2)
                     $("#course_part_one").prepend("<img style='width: 100%' src='"+result[i]+"'><p>" + result[i-1] + "</p>");
@@ -60,11 +63,29 @@ function openCourse(i) {
             }
             if(level>3){
                 $("#test_part_button").removeAttr('disabled');
-                alert("test here!");
+                openTest();
             }
         });
     });
 };
+
+function openTest(){
+    var course = sessionStorage.getItem("course");
+    $("#course_test_part").empty();
+    $.get("./php/getTestQuestions.php",{course: images[course]},function (data) {
+        var array = data.split("#");
+        for(var i=0; i<array.length; i+=2){
+            var res = "<div><p class='test_question'>"+array[i]+"</p><div class='radio'>";
+            var ar = array[i+1].split(';');
+            for(var j=0; j<ar.length;j++) {
+                res += "<p><input id='test_radio" + i + "' type='radio' name='optradio" + i + "' >" + ar[j] + "</p>";
+                $("#test_radio"+i).removeAttr("checked");
+            }
+            res+="</div></div>"
+            $("#course_test_part").append(res);
+        }
+    });
+}
 
 $("#open_second_part_button").click(function () {
     var login = sessionStorage.getItem("login");
@@ -103,15 +124,56 @@ $("#open_test_part_button").click(function () {
 $("#final_test_result").click(function () {
     var login = sessionStorage.getItem("login");
     var course = sessionStorage.getItem("course");
+    var res = []; var amount = 0;
+    for(var i=0; i<20; i+=2){
+        var group = document.getElementsByName("optradio"+i);
+        for(var j=0; j<group.length; j++) {
+            if (group[j].checked == true){
+                amount++;
+                res.push((j+1));
+            }
+        }
+    }
+    if(amount<10){
+        alert("Ви відповіли не на всі питання! Пройдіть тест повнястю для його завершення.");
+        return;
+    }
     $("#test_part_button").click();
     if(course=="no") alert("course==no in courses.js 68line");
-    $.get("./php/setUserLevelInCourse.php",{login: login, level: 5, course: images[course]},function (data) {
-        openCourse(course);
-        if(data=="changed") fillGoals();
+    $.get("./php/getCorrectAnswer.php",{course: images[course]},function (data) {
+        var userResult = 0;
+        var ans = data.split("#");
+        for(var i=0; i<10; i++){
+            if(ans[i]==res[i]) userResult++;
+        }
+        if(userResult>6) {
+            alert("Вітаємо! Ви набрали "+userResult+"/10 і успішно пройшли курс "+images[course]);
+            $.get("./php/setUserLevelInCourse.php", {login: login, level: 5, course: images[course]}, function (data) {
+                openCourse(course);
+                if (data == "changed") fillGoals();
+                openTest();
+            });
+        } else {
+            openTest();
+            alert("Ви набрали "+userResult+"/10. На жаль, цього результату недостатньо для отримання нагороди. Спробуйте ще!!!");
+        }
     });
 });
 
 function returnToAllCourses() {
+
+    if(open_first){
+        $("#part_one_button").click();
+    }
+    if(open_third){
+        $("#part_three_button").click();
+    }
+    if(open_test){
+        $("#test_part_button").click();
+    }
+    if(open_second){
+        $("#part_two_button").click();
+    }
     sessionStorage.setItem("course","no");
     $("#part_three_button").attr('disabled', 'disabled');
     $("#part_two_button").attr('disabled', 'disabled');
@@ -161,9 +223,15 @@ var open_test = false;
 $("#part_one_button").click(function () {
     if(!open_first){
         open_first = true;
-        if(open_second) $("#part_two_button").click();
-        if(open_third) $("#part_three_button").click();
-        if(open_test) $("#test_part_button").click();
+        if(open_second){
+            $("#part_two_button").click();
+        }
+        if(open_third){
+            $("#part_three_button").click();
+        }
+        if(open_test){
+            $("#test_part_button").click();
+        }
         $("#href_one").click();
     }
     else{
@@ -173,9 +241,15 @@ $("#part_one_button").click(function () {
 $("#part_two_button").click(function () {
     if(!open_second){
         open_second = true;
-        if(open_first) $("#part_one_button").click();
-        if(open_third) $("#part_three_button").click();
-        if(open_test) $("#test_part_button").click();
+        if(open_first){
+            $("#part_one_button").click();
+        }
+        if(open_third){
+            $("#part_three_button").click();
+        }
+        if(open_test){
+            $("#test_part_button").click();
+        }
 
     }
     else{
@@ -185,9 +259,15 @@ $("#part_two_button").click(function () {
 $("#part_three_button").click(function () {
     if(!open_third){
         open_third = true;
-        if(open_second) $("#part_two_button").click();
-        if(open_first) $("#part_one_button").click();
-        if(open_test) $("#test_part_button").click();
+        if(open_first){
+            $("#part_one_button").click();
+        }
+        if(open_second){
+            $("#part_two_button").click();
+        }
+        if(open_test){
+            $("#test_part_button").click();
+        }
         $("#href_three").click();
     }
     else{
@@ -197,9 +277,15 @@ $("#part_three_button").click(function () {
 $("#test_part_button").click(function () {
     if(!open_test){
         open_test = true;
-        if(open_second) $("#part_two_button").click();
-        if(open_third) $("#part_three_button").click();
-        if(open_first) $("#part_one_button").click();
+        if(open_first){
+            $("#part_one_button").click();
+        }
+        if(open_third){
+            $("#part_three_button").click();
+        }
+        if(open_second){
+            $("#part_two_button").click();
+        }
         $("#href_test").click();
     }
     else{
