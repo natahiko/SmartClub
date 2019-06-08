@@ -41,7 +41,7 @@ function openCourse(i) {
             var result = data.split("#");
             if(level==1){
                 for(var i=result.length-1;i>=0;i-=2)
-                    $("#course_part_one").prepend("<p>" + result[i-1] + "</p><img style='width: 100%' src='"+result[i]+"'>");
+                    $("#course_part_one").prepend("<img style='width: 100%' src='"+result[i]+"'><p>" + result[i-1] + "</p>");
             }else if(level==2){
                 $("#part_two_button").removeAttr('disabled');
                 for(var i=result.length-1;i>=20;i-=2)
@@ -125,11 +125,14 @@ function returnToAllCourses() {
 }
 $("#courses_back_button").click(function () {
     returnToAllCourses();
+    open_first = false;
+    open_second = false;
+    open_third = false;
+    open_test = false;
 });
 function fillGoals(){
     var login = sessionStorage.getItem("login");
     $.get("./php/getUserLevels.php",{login: login},function (alllevel) {
-        alert(alllevel);
         var res = "";
         var levels = alllevel.split(";");
         for (var i = 0; i < titles.length; i++) {
@@ -150,3 +153,56 @@ function fillGoals(){
         $("#goals").append(res);
     });
 }
+var open_first = false;
+var open_second = false;
+var open_third = false;
+var open_test = false;
+
+$("#part_one_button").click(function () {
+    if(!open_first){
+        open_first = true;
+        if(open_second) $("#part_two_button").click();
+        if(open_third) $("#part_three_button").click();
+        if(open_test) $("#test_part_button").click();
+        $("#href_one").click();
+    }
+    else{
+        open_first = false
+    }
+});
+$("#part_two_button").click(function () {
+    if(!open_second){
+        open_second = true;
+        if(open_first) $("#part_one_button").click();
+        if(open_third) $("#part_three_button").click();
+        if(open_test) $("#test_part_button").click();
+
+    }
+    else{
+        open_second = false
+    }
+});
+$("#part_three_button").click(function () {
+    if(!open_third){
+        open_third = true;
+        if(open_second) $("#part_two_button").click();
+        if(open_first) $("#part_one_button").click();
+        if(open_test) $("#test_part_button").click();
+        $("#href_three").click();
+    }
+    else{
+        open_third = false
+    }
+});
+$("#test_part_button").click(function () {
+    if(!open_test){
+        open_test = true;
+        if(open_second) $("#part_two_button").click();
+        if(open_third) $("#part_three_button").click();
+        if(open_first) $("#part_one_button").click();
+        $("#href_test").click();
+    }
+    else{
+        open_test = false
+    }
+});

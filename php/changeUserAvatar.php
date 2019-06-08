@@ -1,5 +1,6 @@
 <?php
 $login = $_REQUEST["login"];
+$avatar = $_REQUEST["avatar"];
 
 define("DB_HOST", "localhost");
 define("DB_USER", "root");
@@ -11,13 +12,10 @@ if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
-
-$sql = "SELECT * FROM Smartclub.usersGoals WHERE login= '$login'";
+$sql = "UPDATE Smartclub.allUsers SET image='$avatar' WHERE login= '$login'";
 $result = $conn->query($sql);
-//$row = mysqli_fetch_array($result);
-$row = $result->fetch_assoc();
-//for($i=2; $i<)
-echo $row["ethics"].';'.$row["inventions"],';'.$row["universe"];
+
+echo $avatar;
 
 mysqli_close($conn);
 ?>

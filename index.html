@@ -53,7 +53,8 @@
     <div id="account">
         <div class="text-center slogan" style=" font-size: 28px;padding:10px;">Мій акаунт</div>
         <div id="account_flash" class="account_flash">
-            <div id="avatar_container"><img id="avatar" src="images/avatars/catwoman.png">
+            <div id="avatar_container" data-toggle="tooltip" >
+                <img id="avatar" src="images/avatars/catwoman.png">
 
             </div>
             <div id="account_fields">
@@ -121,12 +122,13 @@
 
             <div id="course_material" class="title" style="margin-bottom: 0">
                 <div class="card-header levels" id="part_one">
-
+                    <a href="#part_one_button" id="href_one" style="visibility: hidden"></a>
+                    <a href="#href_one">
                     <button id="part_one_button" class="btn btn-outline-warning" data-toggle="collapse"
                             data-target="#part_one_collapse"
                             aria-expanded="false" aria-controls="part_one_collapse">
                         Рівень 1: легкий
-                    </button>
+                    </button></a>
 
                     <div id="part_one_collapse" class="collapse" aria-labelledby="part_one">
                         <div  class="card-body">
@@ -139,14 +141,13 @@
 
                 </div>
 
-
-                <div class="card-header levels" id="part_two">
-
+                <div class="card-header levels" id="part_two" method="LINK" action="#href_one">
+                    <a href="#href_one">
                     <button id="part_two_button" class="btn btn-outline-warning" data-toggle="collapse"
                             data-target="#part_two_collapse"
                             aria-expanded="false" aria-controls="part_two_collapse" disabled>
                         Рівень 2: Поглиблений
-                    </button>
+                    </button></a>
 
                     <div id="part_two_collapse" class="collapse" aria-labelledby="part_two">
                         <div class="card-body">
@@ -161,12 +162,12 @@
                 </div>
 
                 <div class="card-header levels" id="part_three">
-
+                    <a href="#href_one">
                     <button id="part_three_button" class="btn btn-outline-danger" data-toggle="collapse"
                             data-target="#part_three_collapse"
                             aria-expanded="false" aria-controls="part_three_collapse" disabled>
                         Рівень 3: Ускладнений
-                    </button>
+                    </button></a>
 
                     <div id="part_three_collapse" class="collapse" aria-labelledby="part_three">
                         <div class="card-body">
@@ -181,12 +182,12 @@
                 </div>
 
                 <div class="card-header levels" id="test_part">
-
+                    <a href="#href_one">
                     <button id="test_part_button" class="btn btn-outline-success" data-toggle="collapse"
                             data-target="#test_part_collapse"
                             aria-expanded="false" aria-controls="test_part_collapse" disabled>
                         Фінальний тест
-                    </button>
+                    </button></a>
 
                     <div id="test_part_collapse" class="collapse" aria-labelledby="test_part">
                         <div  class="card-body">
@@ -227,6 +228,16 @@
         <a id="final_entry_button" href="#content" class="btn btn-success entry_long">Увійти</a>
     </div>
 </div>
+
+    <div id="change_avatar_panel" class="entry_panel">
+        <div class="entry_fields">
+            <div id="all_avatars">
+
+            </div>
+            <a id="back_change_avatar_button" href="#content" class="back_button">&#10539;</a>
+            <a id="final_change_avatar_button" onclick="saveChangeAvatarImg()" href="#content" class="btn btn-success entry_long">ok</a>
+        </div>
+    </div>
 <div id="register_panel" class="entry_panel">
     <div id="register" class="entry_fields">
 

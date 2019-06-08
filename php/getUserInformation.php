@@ -23,13 +23,13 @@ if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
-$sql = "SELECT name, age, email FROM Smartclub.allusers WHERE login= '$login'";
+$sql = "SELECT name, age, email,image FROM Smartclub.allusers WHERE login= '$login'";
 $result = $conn->query($sql);
 $row = mysqli_fetch_array($result);
 
 //echo json_encode(array(name => $row["name"],age => $row["age"], email => $row["email"]));
 
-echo $row["name"], " ", $row["age"]," ",$row["email"];
+echo $row["name"], " ", $row["age"]," ",$row["email"]," ",$row["image"];
 
 mysqli_close($conn);
 ?>

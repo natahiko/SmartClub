@@ -7,9 +7,10 @@
             if(i!=ar.length-3) name += " ";
         }
         $("#name").html(name);
-        $("#age_input").val(ar[ar.length-2]);
+        $("#age_input").val(ar[ar.length-3]);
         $("#login_input").val(sessionStorage.getItem("login"));
-        $("#email_input").val(ar[ar.length-1]);
+        $("#email_input").val(ar[ar.length-2]);
+        $("#avatar").attr("src",ar[ar.length-1]);
     });
     sessionStorage.setItem("course","no");
 }
@@ -146,6 +147,9 @@ $("#register_age").keyup(function () {
     else
         $("#register_age").css("background","#BFFFC7");
 });
+$("#register_age").change(function () {
+    $("#register_age").keyup();
+});
 $("#register_name").keyup(function () {
     var name = $("#register_name").val();
     if (name=="" || consistcharacters(name))
@@ -239,6 +243,10 @@ $("#save_account_button").click(function () {
 });
 
 function closeEditAccount(){
+    $("#avatar_container").removeClass("change_avatar");
+    $("#avatar_container").removeAttr("title");
+
+    open_edit_account = false;
     $("#email_input").css("background","transparent");
     $("#age_input").css("background","transparent");
     $("#edit_account_button").css({display:'inline-block'});
@@ -300,3 +308,39 @@ $("#delete_account_button").click(function () {
         closeEditAccount();
     }
 });
+var avatar_array = [];
+$("#avatar").click(function () {
+    if(open_edit_account){
+        $.get("./php/getAllFilesFromFolder.php",{folder: "../images/avatars/"},function (data) {
+            var array = data.split(" ");
+            $("#change_avatar_panel").show();
+            $("#all_avatars").empty();
+            for(var i=2; i<array.length-1; i++){
+                var name = array[i];
+                avatar_array.push(array[i]);
+                $("#all_avatars").append("<span  class='oneOfAvatarImg' ><img id='avatar"+i+"' onclick='makeChoice("+i+")' src='./images/avatars/"+array[i]+"' ></span>");
+            }
+        });
+    } else return;
+});
+function makeChoice(number) {
+    $("#avatar"+number).css("border","5px solid green");
+    var lastavatar = sessionStorage.getItem("avatar");
+    if(lastavatar!="")
+        $("#avatar"+lastavatar).css("border","0");
+    if(number==lastavatar)
+        sessionStorage.setItem("avatar","");
+    else sessionStorage.setItem("avatar",number);
+}
+function saveChangeAvatarImg(){
+    var avatar = sessionStorage.getItem("avatar");
+    if(avatar==""){
+        alert("Ви не обрали жодного зображення");
+        $("#back_change_avatar_button").click();
+        return;
+    }
+    var login = sessionStorage.getItem("login");
+    $("#back_change_avatar_button").click();
+    $("#avatar").attr("src","./images/avatars/"+avatar_array[avatar-2]);
+    $.get("./php/changeUserAvatar.php",{avatar: "./images/avatars/"+avatar_array[avatar-2],login: login});
+}

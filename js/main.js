@@ -1,6 +1,7 @@
 /*перша сторінка при загрузці*/
     $("#content > div").hide();
-    $("#entry_panel").hide();
+$("#entry_panel").hide();
+$("#change_avatar_panel").hide();
     $("#register_panel").hide();
     $("#headingOne").hide();
 if(sessionStorage.getItem("page")==null) sessionStorage.setItem("page","home");
@@ -74,6 +75,10 @@ $("#back_entry_button").click(function () {
     $("#entry_panel").hide();
     $("#entry_panel").css("z-index","-1");
 });
+$("#back_change_avatar_button").click(function () {
+    $("#change_avatar_panel").hide();
+    sessionStorage.setItem("avatar","");
+});
 $("#back_register_button").click(function () {
     $("#register_panel").hide();
     $("#register_panel").css("z-index","-1");
@@ -93,12 +98,16 @@ function buttonsShow() {
     $("#exit_button").show();
 }
 
-
+var open_edit_account = false;
 /*edit profile button*/
 $("#edit_account_button").click(function () {
     $("#edit_account_button").hide();
     $("#delete_account_button").css(
         {display:'inline-block'});
+    open_edit_account = true;
+    $("#avatar_container").addClass("change_avatar");
+    $("#avatar_container").attr("title","Натисни,щоб змінити зображення!");
+
     $("#headingOne").show();
     $("#save_account_button").css(
         {display:'inline-block'});
@@ -106,4 +115,5 @@ $("#edit_account_button").click(function () {
     $("#login_input").removeAttr('disabled');
     $("#email_input").removeAttr('disabled');
 });
+
 
