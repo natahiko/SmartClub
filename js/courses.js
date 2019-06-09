@@ -184,13 +184,13 @@ function returnToAllCourses() {
     $("#course_part_two").empty();
     $("#course_part_three").empty();
     $("#courses_flash").show();
-}
-$("#courses_back_button").click(function () {
-    returnToAllCourses();
     open_first = false;
     open_second = false;
     open_third = false;
     open_test = false;
+}
+$("#courses_back_button").click(function () {
+    returnToAllCourses();
 });
 function fillGoals(){
     var login = sessionStorage.getItem("login");

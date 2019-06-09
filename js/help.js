@@ -1,6 +1,5 @@
 const question = "Не можете знайти відповідь? "+"<br>"+" Зв'яжіться з нами!";
 
-fill_questions();
 const answers = [
     'Напишіть нам',
     'Сайт не зберігає ніякої особистої інформації, реєстрація потрібна тільки для збереження інформації про те, на якому місці курсу ви зупинилися та здобутих нагород',
@@ -10,9 +9,10 @@ const answers = [
     'Матеріали курсу можна повторно переглядати скільки завгодно разів, так само як і проходити тести'];
 
 function fill_questions(){
+
+    $("#help_thread1").empty();
         $.get("./php/getUsersQuestionsAndAnswers.php",function (data) {
             var array = data.split("#");
-            $("#help_thread1").empty();
             $("#help_thread1").append("<div class='question_board'><p class='quest'>" + question + "</p><hr color=' #303030'><textarea class='form-control' rows='3' id='client_question'></textarea><button class='btn btn-info ' onclick='sendMessage()' id='send_mess_button'>Відправити</button></div>");
             for(let i=0, j=0;i<array.length-1;i+=2) {
                 if(array[i+1]=="") continue;
@@ -29,8 +29,9 @@ function fill_questions(){
             }
         });
 }
+fill_questions();
 $("#help_button").click(function () {
-    fill_questions();
+    //fill_questions();
     $("#content > div").hide();
     $("#help").show();
     sessionStorage.setItem("page", "help");
