@@ -226,11 +226,11 @@ $("#part_one_button").click(function () {
         if(open_second){
             $("#part_two_button").click();
         }
-        if(open_third){
+        if(open_third) {
             $("#part_three_button").click();
         }
         if(open_test){
-            $("#test_part_button").click();
+             $("#test_part_button").click();
         }
         $("#href_one").click();
     }
@@ -240,7 +240,6 @@ $("#part_one_button").click(function () {
 });
 $("#part_two_button").click(function () {
     if(!open_second){
-        open_second = true;
         if(open_first){
             $("#part_one_button").click();
         }
@@ -250,15 +249,17 @@ $("#part_two_button").click(function () {
         if(open_test){
             $("#test_part_button").click();
         }
+        $("#href_one").click();
+        open_second = true;
 
     }
     else{
         open_second = false
     }
 });
+
 $("#part_three_button").click(function () {
     if(!open_third){
-        open_third = true;
         if(open_first){
             $("#part_one_button").click();
         }
@@ -268,7 +269,8 @@ $("#part_three_button").click(function () {
         if(open_test){
             $("#test_part_button").click();
         }
-        $("#href_three").click();
+        $("#href_one").click();
+        open_third = true;
     }
     else{
         open_third = false
@@ -289,6 +291,6 @@ $("#test_part_button").click(function () {
         $("#href_test").click();
     }
     else{
-        open_test = false
+            openTest();
     }
 });

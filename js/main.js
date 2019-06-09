@@ -40,13 +40,6 @@ $("#goals_button").click(function () {
 $("#second_goals_button").click(function () {
     $("#goals_button").click();
 });
-$("#help_button").click(function () {
-    $("#content > div").hide();
-    $("#help").show();
-    sessionStorage.setItem("page", "help");
-    sessionStorage.setItem("entry","yes" );
-    closeEditAccount();
-});
 
 $("#exit_button").click(function () {
     $("#content > div").hide();

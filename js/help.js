@@ -1,10 +1,6 @@
-const questions= [
-    "Не можете знайти відповідь? "+"<br>"+" Зв'яжіться з нами!",
-    "Чи зберігає сайт особисту інформацію про мою дитину?",
-    "Чи зможе дитина сама вчитись?",
-    "Якщо моя дитина не вміє читати?",
-    "Як змінити пароль?",
-    "Скільки разів можна проходити один курс?"];
+const question = "Не можете знайти відповідь? "+"<br>"+" Зв'яжіться з нами!";
+
+fill_questions();
 const answers = [
     'Напишіть нам',
     'Сайт не зберігає ніякої особистої інформації, реєстрація потрібна тільки для збереження інформації про те, на якому місці курсу ви зупинилися та здобутих нагород',
@@ -14,21 +10,47 @@ const answers = [
     'Матеріали курсу можна повторно переглядати скільки завгодно разів, так само як і проходити тести'];
 
 function fill_questions(){
-    for(let i=0;i<questions.length;i++){
-
-        if(i==0)
-            $("#help_thread1").append("<div class='question_board'><p >"+questions[i]+"</p><hr color=' #303030'><textarea class='form-control' rows='3' id='client_question'></textarea><button class='btn btn-info ' id='send_mess_button'>Відправити</button></div>");
-        if(i%3===0&&i!=0){
-            $("#help_thread1").append("<div class='question_board'><p >"+questions[i]+"</p><hr><p>"+answers[i]+"</p></div>");
-        }
-        if(i%3===1){
-            $("#help_thread2").append("<div class='question_board'><p >"+questions[i]+"</p><hr><p >"+answers[i]+"</p></div>");
-        }
-        if(i%3===2){
-            $("#help_thread3").append("<div class='question_board'><p '>"+questions[i]+"</p><hr><p >"+answers[i]+"</p></div>");
-        }
-
-    }
+        $.get("./php/getUsersQuestionsAndAnswers.php",function (data) {
+            var array = data.split("#");
+            $("#help_thread1").empty();
+            $("#help_thread1").append("<div class='question_board'><p class='quest'>" + question + "</p><hr color=' #303030'><textarea class='form-control' rows='3' id='client_question'></textarea><button class='btn btn-info ' onclick='sendMessage()' id='send_mess_button'>Відправити</button></div>");
+            for(let i=0, j=0;i<array.length-1;i+=2) {
+                if(array[i+1]=="") continue;
+                 if (j % 3 === 2) {
+                    $("#help_thread1").append("<div class='question_board'><p class='quest'>" + array[i] + "</p><hr><p>" + array[i+1] + "</p></div>");
+                }
+                if (j % 3 === 0) {
+                    $("#help_thread2").append("<div class='question_board'><p class='quest'>" + array[i] + "</p><hr><p >" + array[i+1] + "</p></div>");
+                }
+                if (j % 3 === 1) {
+                    $("#help_thread3").append("<div class='question_board'><p class='quest'>" + array[i] + "</p><hr><p >" + array[i+1] + "</p></div>");
+                }
+                j++;
+            }
+        });
 }
-fill_questions();
+$("#help_button").click(function () {
+    fill_questions();
+    $("#content > div").hide();
+    $("#help").show();
+    sessionStorage.setItem("page", "help");
+    sessionStorage.setItem("entry","yes" );
+    closeEditAccount();
+});
+function sendMessage(){
+    var text = $("#client_question").val();
+    if(text==""){
+        alert("Пусте питання не може бути відправлене на опрацювання!");
+        return;
+    }
+    $.get("./php/sendUserQuestion.php",{question: text},function (data) {
+        if(data=="true"){
+            alert("Ваше питання відправлене на опрацювання, відповідь скоро з'явиться у вікні підтримки!");
+            $("#client_question").val("");
+        } else alert("При выдправці вашого запиту сталася помилка, спробуйте ще!");
+    });
+}
+/*
+$("#send_mess_button").click(function () {
 
+});*/

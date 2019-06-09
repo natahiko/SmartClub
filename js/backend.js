@@ -92,6 +92,8 @@ function insertUser(login, password, name, age, email){
         sessionStorage.setItem("page", "home");
         sessionStorage.setItem("entry","yes" );
         sessionStorage.setItem("login",login );
+
+        fillGoals();
         $("#register_login").val("");
         $("#register-password2").val("");
         $("#register-password").val("");
@@ -192,6 +194,8 @@ $("#final_entry_button").click(function () {
             sessionStorage.setItem("page", "home");
             sessionStorage.setItem("entry","yes" );
             sessionStorage.setItem("login",login );
+
+            fillGoals();
             setUserInformationInAccount();
         }
     });
@@ -231,6 +235,8 @@ $("#save_account_button").click(function () {
             return;
         } else{
             sessionStorage.setItem("login",login);
+
+            fillGoals();
             closeEditAccount();
             $("#age_input").val(age);
             $("#login_input").val(login);
