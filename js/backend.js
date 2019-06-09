@@ -260,6 +260,9 @@ function closeEditAccount(){
     $("#save_account_button").css({display:'none'});
     $("#headingOne").hide();
 
+    $("#oldpassword_change_account").val("");
+    $("#newpassword_change_account").val("");
+    $("#newpassword_change_account2").val("");
     $("#age_input").attr('disabled', 'disabled');
     $("#login_input").attr('disabled', 'disabled');
     $("#email_input").attr('disabled', 'disabled');
